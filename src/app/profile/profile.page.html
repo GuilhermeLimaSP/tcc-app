@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <img src="assets/img/profile.png" alt="" id="profile">
+    <h2>Luiza Sousa</h2>    
+  </div>
+
+  <ul>
+    <li><b>Informações públicas:</b></li>
+    <li>Reports enviados: 11</li>
+  </ul>
+
+  <ul>
+    <li><b>Informações pessoais:</b></li>
+    <li>E-mail: luisasouza33@gmail.com</li>
+    <li>CEP: 05454-69</li>
+    <li>Criação da conta: 04/12/2020</li>
+  </ul>
+
+  <div class="buttons">
+    <ion-button expand="block" color="danger" (click)="openPassword()">Mudar Senha</ion-button>
+    <ion-button expand="block" (click)="openInfoChange()">Atualizar Informações</ion-button>
+  </div>
+</ion-content>

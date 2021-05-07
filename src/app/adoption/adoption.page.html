@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Adoções</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="ion-text-center">Selecione um animal para maiores informações:</p>
+  <ion-list>
+    <ion-item routerLink="/profile-adoption" routerDirection="forward">
+      <ion-avatar slot="start">
+        <img src="assets/img/dog01.jpg">
+      </ion-avatar>
+ 
+      <ion-label>
+        <h2>Panqueca</h2>
+        <p>SRD, 1 ano e 2 meses, São Paulo</p>
+      </ion-label>
+
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item routerLink="/profile-adoption" routerDirection="forward">
+      <ion-avatar slot="start">
+        <img src="assets/img/dog03.jpg">
+      </ion-avatar>
+
+      <ion-label>
+        <h2>Han </h2>
+        <p>Pastor Alemão, 2 meses, São Paulo</p>
+      </ion-label>
+
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item routerLink="/profile-adoption" routerDirection="forward">
+      <ion-avatar slot="start">
+        <img src="assets/img/dog04.jpg">
+      </ion-avatar>
+
+      <ion-label>
+        <h2>Walter</h2>
+        <p>Bull Terrier, 2 anos, São Paulo</p>
+      </ion-label>
+
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </ion-list> 
+</ion-content>

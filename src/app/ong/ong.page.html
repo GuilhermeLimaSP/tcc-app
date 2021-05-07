@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ONGs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="ion-text-center">Selecione uma ONG cadastrada para maiores informações:</p>
+  <ion-content>
+    <ion-list>
+      <ion-item routerLink="/profile-ong" routerDirection="forward">
+        <ion-avatar slot="start">
+          <img src="assets/img/ong01.png">
+        </ion-avatar>
+  
+        <ion-label>
+          <h2>Mi&Au</h2>
+          <p>Uma ong de socorro animal para cães e gatos localizada na região de são paulo!</p>
+        </ion-label>
+
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+
+      <ion-item routerLink="/profile-ong" routerDirection="forward">
+        <ion-avatar slot="start">
+          <img src="assets/img/ong03.jpeg">
+        </ion-avatar>
+  
+        <ion-label>
+          <h2>Cão sem dono</h2>
+          <p>Uma ong proteção animal para cachorros localizada em são paulo e rio de janeiro!</p>
+        </ion-label>
+
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-content>

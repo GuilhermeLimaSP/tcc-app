@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Localização por GPS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <p>Por favor, forneça as seguintes informações:</p>
+
+  <form>
+    <ion-label position="floating">Nome da rua</ion-label>
+    <ion-input type="text" name="address" [(ngModel)]="address"></ion-input>
+
+    <ion-button color="primary">Obter localização agora</ion-button>
+    <ion-button color="danger" (click)="dismiss()">Sair</ion-button>
+  </form>
+</ion-content>
+ 

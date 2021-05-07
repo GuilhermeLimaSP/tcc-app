@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="ion-text-center">
+    <img src="assets/img/logo.png" alt="Login" id="logo"/>
+
+    <h3>Criar uma conta</h3>
+  </div>
+  
+  <form>
+    <ion-item> 
+      <ion-label position="floating">Seu nome</ion-label>
+      <ion-input type="password" name="Seu nome" [(ngModel)]="nome"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" name="senha" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirme sua senha</ion-label>
+      <ion-input type="password" name="confirmar_senha" [(ngModel)]="confirmarSenha"></ion-input>
+    </ion-item>
+    
+    <ion-button expand="block" color="danger" (click)="goTo('login');">Voltar</ion-button>
+    <ion-button expand="block" color="success">Criar a conta</ion-button>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <div class="ion-text-center ion-padding">
+    <small>Copyright - Companheiro Animal</small>
+  </div>
+</ion-footer>

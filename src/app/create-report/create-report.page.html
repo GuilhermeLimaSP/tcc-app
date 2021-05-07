@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Criar Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <p>Preencha as seguintes informações para que o report será gerado e enviado para ONGS cadastradas.</p>
+  </div>
+
+  <form>
+    <h4 class="ion-text-center">Sobre o animal</h4>
+    <ion-item>
+      <ion-label>Qual animal?</ion-label>
+      <ion-select okText="Ok" cancelText="Voltar">
+        <ion-select-option value="dog">Cachorro</ion-select-option>
+        <ion-select-option value="cat">Gato</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição do animal</ion-label>
+      <ion-textarea clearOnEdit="true" rows="3" placeholder="Exemplo: cachorro SRD branco, com manchas pretas" ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">O que acontece?</ion-label>
+      <ion-textarea clearOnEdit="true" rows="3" placeholder="Exemplo: o cachorro está com a pata direita ferida e não consegue apoiar-lá no chão"></ion-textarea>
+    </ion-item>
+
+    <h4 class="ion-text-center">Localização</h4>
+    <div class="ion-text-center">
+      <p>Precisamos saber a localização do animal, para isto, selecione uma opção:</p>
+    </div>
+
+    <ion-button expand="full" (click)="openGps()"><ion-icon name="locate-outline"></ion-icon> Localização GPS</ion-button>
+    <ion-button expand="full" (click)="openAddress()"><ion-icon name="map-outline"></ion-icon> Nome da rua</ion-button>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Cep</ion-label>
+      <ion-input type="text" name="cep" [(ngModel)]="cep"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Rua</ion-label>
+      <ion-input type="text" name="address" [(ngModel)]="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Número próximo</ion-label>
+      <ion-input type="text" name="address_number" [(ngModel)]="address_number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input type="text" name="address_district" [(ngModel)]="address_district"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Estado</ion-label>
+      <ion-input type="text" name="address_state" [(ngModel)]="address_state"></ion-input>
+    </ion-item>
+
+    <h4 class="ion-text-center">Imagens</h4>
+    <div class="ion-text-center">
+      <p>Precisamos que você tire 2 fotos para complementar o seu report</p>
+    </div>
+   
+    <h5>Foto do animal <ion-icon name="camera-outline"></ion-icon></h5>
+    <img src="assets/img/missing_photo.png" alt="">
+   
+    <h5>Ponto de referência <ion-icon name="camera-outline"></ion-icon></h5>
+    <img src="assets/img/missing_photo.png" alt="">
+
+    <ion-button expand="full" color="danger" (click)="createAccount(nome, email, email2, senha, senha2)">Enviar report</ion-button>
+  </form>
+</ion-content>

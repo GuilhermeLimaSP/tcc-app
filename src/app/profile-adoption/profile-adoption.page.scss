@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+.container span{
+    font-size: 14px;
+}
+.container_info{
+    padding: 10px;
+}
+.container img{
+    max-height: 300px;
+    width: 100%;
+}  
+#animal_photo{
+    border-radius: 20px;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    
+    text-align: left;
+}

@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Reports</ion-title>
+
+    <ion-button color="danger" slot="end" routerLink="/create-report" routerDirection="forward"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="ion-text-center">Selecione um report para maiores informações:</p>
+
+  <ion-list>
+    <ion-item routerLink="/view-report" routerDirection="forward">
+      <ion-label>
+        <h2>Report 1043 - 01/05/2021</h2>
+        <p>Rua são paulo n° 43, 72548-837</p>
+      </ion-label>
+
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item routerLink="/view-report" routerDirection="forward">
+      <ion-label>
+        <h2>Report 954 - 29/03/2021</h2>
+        <p>Rua são paulo n° 14, 72548-837</p>
+      </ion-label>
+
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

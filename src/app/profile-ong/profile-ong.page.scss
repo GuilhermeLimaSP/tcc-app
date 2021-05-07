@@ -1,0 +1,39 @@
+ .profile_one{
+    display: flex;
+    flex-direction: row;
+
+    padding: 12px;
+
+    .profile_texts{
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;    
+    }
+    #ong_photo{
+        width: 150px;
+        height: 150px;
+        border-radius: 8px;
+    }
+}
+
+.profile_infos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+    
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > span:first-child{
+            font-weight: bold;
+        }
+    }
+
+}
+
+.profile_others{
+    padding: 14px;
+}
