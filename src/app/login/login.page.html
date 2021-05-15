@@ -5,26 +5,33 @@
 </ion-header> -->
 <ion-content>
   <div class="ion-text-center">
-    <img src="assets/img/logo.png" alt="Login" id="logo"/>
-    <h3>Login</h3>
+    <img src="assets/img/logo.png" alt="Login" id="logo" />
   </div>
+  <div class="login">
+    <h3>Login</h3>
+    <form>
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="mail-outline"></ion-icon> Email:
+        </ion-label>
+        <ion-input type="text" name="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="key-outline"></ion-icon> Senha:
+        </ion-label>
+        <ion-input type="password" name="senha" [(ngModel)]="senha"></ion-input>
+      </ion-item>
 
-  <form>
-    <ion-item>
-      <ion-label position="floating">Email:</ion-label>
-      <ion-input type="text" name="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Senha:</ion-label>
-      <ion-input type="password" name="senha" [(ngModel)]="senha"></ion-input>
-    </ion-item>
-    
-    <p class="ion-text-right" id="passwordRecover"><a (click)="changePassword()">Esqueceu sua senha?</a></p>
-    <ion-button expand="block" color="tertiary" (click)="goTo('create-account');">Crie sua conta</ion-button>
-    <ion-button expand="block" color="success" (click)="goTo('adoption');">Entrar</ion-button>
-  </form>
+      <p class="ion-text-center" id="passwordRecover"><a (click)="changePassword()">Esqueceu sua senha?</a></p>
+      <ion-button expand="block" color="success" (click)="goTo('adoption');">Entrar</ion-button>
+      <p class="ion-text-center">ou</p>
+      <ion-button expand="block" color="dark" (click)="goTo('create-account');">Crie sua conta</ion-button>
+
+    </form>
+  </div>
 </ion-content>
- 
+
 <ion-footer>
   <div class="ion-text-center ion-padding">
     <small>Copyright - Companheiro Animal</small>
