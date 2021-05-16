@@ -11,7 +11,8 @@
         <ion-label position="floating">
           <ion-icon name="person-outline"></ion-icon> Nome
         </ion-label>
-        <ion-input type="password" name="Seu nome" [(ngModel)]="nome"></ion-input>
+        <ion-input type="password" name="Seu nome" [(ngModel)]="
+        Name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">
@@ -23,20 +24,32 @@
         <ion-label position="floating">
           <ion-icon name="key-outline"></ion-icon> Senha
         </ion-label>
-        <ion-input type="password" name="senha" [(ngModel)]="senha"></ion-input>
+        <ion-input type="password" name="senha" [(ngModel)]="password"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">
           <ion-icon name="key-outline"></ion-icon> Confirme sua senha
         </ion-label>
-        <ion-input type="password" name="confirmar_senha" [(ngModel)]="confirmarSenha"></ion-input>
+        <ion-input type="password" name="confirmar_senha" [(ngModel)]="confirmpassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="earth-outline"></ion-icon> Cep
+        </ion-label>
+        <ion-input type="password" name="cep" [(ngModel)]="confirmpassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="call-outline"></ion-icon>Telefone
+        </ion-label>
+        <ion-input type="password" name="phone" [(ngModel)]="confirmpassword"></ion-input>
       </ion-item>
       <p></p>
 
+      <ion-button expand="block" color="success">Criar a conta</ion-button>
       <ion-button expand="block" color="danger" (click)="goTo('login');">
         <ion-icon name="arrow-back-outline"></ion-icon>Voltar
       </ion-button>
-      <ion-button expand="block" color="success">Criar a conta</ion-button>
     </form>
   </div>
 </ion-content>

@@ -9,21 +9,20 @@ form{
     text-decoration: none;
 }
 ion-content{
-    --ion-background-color:  #4682B4;
+    --background: url('../../assets/img/BGregister.jpg') no-repeat center center / cover !important;
+    //--ion-background-color: #4682B4;
     --ion-color: white;
 }
 h3{
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Roboto', sans-serif;
 }
 ion-item{
-    --ion-background-color: #346899;
+    --ion-background-color:0;
+    color: white;
 
 }
-
-
-
-.register{
+/*.register{
     height: 74vh;
     width:100%;
     max-width: 500px;
@@ -34,7 +33,7 @@ ion-item{
     margin: auto;
     border-top-left-radius:46px ;
     border-top-right-radius: 46px;
-}
+}*/
 
 ion-footer{
     background-color:#346899;

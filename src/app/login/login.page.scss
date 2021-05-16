@@ -9,30 +9,34 @@ form{
     text-decoration: none;
 }
 ion-content{
-    --ion-background-color: #4682B4;
+    --background: url('../../assets/img/BGlogin2.jpg') no-repeat center center / cover !important;
+    //--ion-background-color: #4682B4;
     --ion-color: white;
 }
 ion-footer{
     background-color: #346899;
     color: white;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Roboto', sans-serif;
 
 }
 h3{
     font: size 10px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
+    color:white;
 }
 a,p{
     text-decoration: none;
-    color: black;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 
 }
 ion-item{
-    --ion-background-color: #346899;
-
+    --ion-background-color:0;
+    color: white;
 }
+
+/*
 .login{
     height: 74vh;
     width:100%;
@@ -40,8 +44,10 @@ ion-item{
     background-color: #346899;
     right: 0;
     left: 0;
-    position: fixed;
+    position:fixed;
     margin: auto;
     border-top-left-radius:46px ;
     border-top-right-radius: 46px;
-}
+}*/
+
+
