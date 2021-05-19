@@ -10,7 +10,7 @@ export class AppComponent {
     { title: 'ONGs', url: '/ong', icon: 'home-outline' },
     { title: 'Reports', url: '/report', icon: 'clipboard-outline' },
     { title: 'Perfil', url: '/profile', icon: 'person-circle-outline' },
-    { title: 'Sair', url: '../login', icon: 'exit-outline' }
+    { title: 'Sair', url: '../login', icon: 'exit-outline'}
   ];
   constructor() {}
 }

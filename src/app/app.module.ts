@@ -13,12 +13,15 @@ import { ReportAddressPageModule } from './report-address/report-address.module'
 import { ProfileUserPageModule } from './profile-user/profile-user.module';
 import { UserPasswordPageModule } from './user-password/user-password.module';
 
+// Custom Imports
+import { HTTP } from '@ionic-native/http/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReportGpsPageModule, ReportAddressPageModule, ProfileUserPageModule, UserPasswordPageModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, NativeStorage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

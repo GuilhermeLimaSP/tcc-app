@@ -20,15 +20,15 @@
         <ion-label position="floating">
           <ion-icon name="key-outline"></ion-icon> Senha:
         </ion-label>
-        <ion-input type="password" name="senha" [(ngModel)]="senha"></ion-input>
+        <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
       </ion-item>
 
       <p class="ion-text-center" id="passwordRecover"><a (click)="changePassword()">Esqueceu sua senha?</a></p>
-      <ion-button expand="block" color="success" (click)="goTo('adoption');">Entrar</ion-button>
+      <ion-button expand="block" color="success" (click)="login(email, password)">Entrar</ion-button>
       <p class="ion-text-center">ou</p>
       <ion-button expand="block" color="dark" (click)="goTo('create-account');">Crie sua conta</ion-button>
 
-    </form>
+    </form> 
   </div>
 </ion-content>
 
