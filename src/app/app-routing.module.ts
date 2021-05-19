@@ -28,15 +28,15 @@ const routes: Routes = [
     loadChildren: () => import('./report/report.module').then( m => m.ReportPageModule)
   },
   {
-    path: 'profile-adoption',
+    path: 'profile-adoption/:id',
     loadChildren: () => import('./profile-adoption/profile-adoption.module').then( m => m.ProfileAdoptionPageModule)
   },
   {
-    path: 'profile-ong',
+    path: 'profile-ong/:id',
     loadChildren: () => import('./profile-ong/profile-ong.module').then( m => m.ProfileOngPageModule)
   },
   {
-    path: 'view-report',
+    path: 'view-report/:id',
     loadChildren: () => import('./view-report/view-report.module').then( m => m.ViewReportPageModule)
   },
   {

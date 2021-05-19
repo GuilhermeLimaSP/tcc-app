@@ -8,42 +8,44 @@
 </ion-header>
 
 <ion-content>
-  <div class="profile_one">
-    <img src="assets/img/ong03.jpeg" alt="" id="ong_photo">
-    <div class="profile_texts">
-      <h2>Cão sem dono</h2>
-      <span>São paulo, SP</span>
-    </div>
-  </div>
-  <div class="profile_infos">
-    <div>
-        <span>155</span>
-        <span>Resgates</span>
-    </div>
-    <div>
-        <span>445</span>
-        <span>Adoções</span>
-    </div>
-    <div>
-        <span>1043</span>
-        <span>Curtidas</span>
-    </div>
-  </div>
-  <div class="profile_others">
-    <ion-item-divider></ion-item-divider>
-    <h3>Sobre</h3> 
-    <p>O Cão Sem Dono é uma ONG (Organização Não Governamental), sem fins lucrativos, e que nasceu de um grande sonho do seu atual presidente: tirar o maior número possível de animais das ruas, dar tratamento adequado e integrá-los a famílias que lhes deem amor, carinho e uma vida digna.</p>
-    
-    <ion-item-divider></ion-item-divider>
-    <h3>Contato</h3> 
-    <p>Você pode entrar em contato com a ONG pelos seguintes meios:</p>
-    <ul>
-      <li>Whatsapp: (11) 932453543</li>
-      <li>E-mail: Resgatebrasileiro@gmail.com</li>
-      <li>Pessoalmente: Avenida Pualo Silva, n° 43</li>
-    </ul>    
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 
-  </div>
+  <div *ngIf="!loading">
+    <div class="profile_one">
+      <img src="{{ apiConnection.baseImagePath }}{{ dataOng.ong_img }}" alt="Foto da Ong" id="ong_photo">
+      <div class="profile_texts">
+        <h2>{{ dataOng.ong_name }}</h2>
+        <span>{{ dataOng.location_state }}</span>
+      </div>
+    </div>
+    <div class="profile_infos">
+      <div>
+          <span>{{ dataOng.ong_rescue_count }}</span>
+          <span>Resgates</span>
+      </div>
+      <div>
+          <span>{{ dataOng.ong_adoptions_count }}</span>
+          <span>Adoções</span>
+      </div>
+      <div>
+          <span>{{ dataOng.ong_likes }}</span>
+          <span>Curtidas</span>
+      </div>
+    </div>
+    <div class="profile_others">
+      <ion-item-divider></ion-item-divider>
+      <h3>Sobre</h3> 
+      <p>{{ dataOng.ong_description }}</p>
+      
+      <ion-item-divider></ion-item-divider>
+      <h3>Contato</h3> 
+      <p>Você pode entrar em contato com a ONG pelos seguintes meios:</p>
+      <ul>
+        <li>E-mail: {{ dataOng.ong_email }}</li>
+        <li>Pessoalmente: {{ dataOng.location_address }} {{dataOng.location_number}}, {{dataOng.location_district}}, {{dataOng.location_state }}</li>
+      </ul>    
 
+    </div>
+  </div>
 </ion-content>
  

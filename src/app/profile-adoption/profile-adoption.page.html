@@ -8,38 +8,39 @@
 </ion-header>
 
 <ion-content>
-  <div class="container">
-    <img src="assets/img/dog04.jpg" alt="" id="animal_photo">
-    <h1>Walter</h1>
-    <span>Bull terrier</span>    
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
+  <div class="container" *ngIf="!loading">
+    <img src="{{ apiConnection.baseImagePath }}{{ dataAnimal.animal_photo }}" alt="" id="animal_photo">
+    <h1>{{ dataAnimal.animal_name }}</h1>
+    <span>{{ dataAnimal.animal_race}}</span>    
   </div> 
-  <div class="container_info">
+  <div class="container_info" *ngIf="!loading">
     <ion-item-divider></ion-item-divider>
     <h3>Sobre</h3> 
-    <p>Walter é um pastor alemão resgatado pela nossa ong Resgate brasileiro, ele tem 2 meses e está a procura de um lar aconchegante!</p>
+    <p>{{ dataAnimal.animal_description }}</p>
 
     <ion-item-divider></ion-item-divider>
     <h3>Informações básicas</h3> 
  
-    <ul>
-      <ul>Idade: 16 anos</ul>
-      <ul>Raça: Bull terrier</ul>
-      <ul>Peso: 20kg</ul>
-      <ul>Porte: Grande</ul>
-      <ul>Sexo: Macho</ul>
+    <ul> 
+      <ul>Idade: {{ dataAnimal.animal_age || "Não informado" }}</ul>
+      <ul>Raça: {{ dataAnimal.animal_race || "Não informado" }}</ul>
+      <ul>Peso: {{ dataAnimal.weight || "Não informado" }}</ul>
+      <ul>Porte: {{ dataAnimal.category || "Não informado" }}</ul>
+      <ul>Sexo: {{ dataAnimal.animal_gender || "Não informado" }}</ul>
     </ul>
 
     <ion-item-divider></ion-item-divider>
-    <h3>ONG</h3>
-    <p>Resgate brasileiro é uma ONG sem fins lucrativos de resgate a animais de todo tipo ou porte!</p> 
+    <h3>ONG {{ dataOng.ong_name  }}</h3>
+    <p>{{ dataOng.ong_description }}</p> 
     
     <ion-item-divider></ion-item-divider>
     <h3>Adote</h3>
     <p>Você gostaria de adotar este animal? Entre em contato diretamente com a ONG para maiores informações:</p> 
     <ul>
-      <li>Whatsapp: (11) 932453543</li>
-      <li>E-mail: Resgatebrasileiro@gmail.com</li>
-      <li>Pessoalmente: Avenida Pualo Silva, N° 43</li>
+      <li>E-mail: {{ dataOng.ong_email }}</li>
+      <li>Pessoalmente: {{ dataOng.location_address }} {{dataOng.location_number}}, {{dataOng.location_district}}, {{dataOng.location_state }}</li>
     </ul>
   </div>
 </ion-content> 

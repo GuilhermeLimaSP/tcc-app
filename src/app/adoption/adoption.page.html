@@ -8,45 +8,109 @@
 </ion-header>
 
 <ion-content>
-  <p class="ion-text-center">Selecione um animal para maiores informações:</p>
-  <ion-list>
-    <ion-item routerLink="/profile-adoption" routerDirection="forward">
-      <ion-avatar slot="start">
-        <img src="assets/img/dog01.jpg">
-      </ion-avatar>
- 
-      <ion-label>
-        <h2>Panqueca</h2>
-        <p>SRD, 1 ano e 2 meses, São Paulo</p>
-      </ion-label>
+  <!-- Skeleton screen -->
+  <div *ngIf="loading">
+    <ion-list>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
 
-      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-    </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
 
-    <ion-item routerLink="/profile-adoption" routerDirection="forward">
-      <ion-avatar slot="start">
-        <img src="assets/img/dog03.jpg">
-      </ion-avatar>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
 
-      <ion-label>
-        <h2>Han </h2>
-        <p>Pastor Alemão, 2 meses, São Paulo</p>
-      </ion-label>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
 
-      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-    </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 
-    <ion-item routerLink="/profile-adoption" routerDirection="forward">
-      <ion-avatar slot="start">
-        <img src="assets/img/dog04.jpg">
-      </ion-avatar>
-
-      <ion-label>
-        <h2>Walter</h2>
-        <p>Bull Terrier, 2 anos, São Paulo</p>
-      </ion-label>
-
-      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-  </ion-list> 
+  <div class="main" *ngIf="!loading">
+    <p class="ion-text-center">Selecione um animal para maiores informações:</p>
+    <ion-list>
+      <ion-item *ngFor="let animal of animals" [routerLink]="['/profile-adoption', animal.id]" routerDirection="forward">
+        <ion-avatar slot="start">
+          <img src="{{ apiConnection.baseImagePath }}{{ animal.animal_photo }}">
+        </ion-avatar>
+   
+        <ion-label>
+          <h2>{{ animal.animal_name }}</h2>
+          <p>{{ animal.animal_race }}, {{ animal.animal_age || "idade não informada" }}</p>
+        </ion-label>
+   
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </ion-list> 
+  </div>
 </ion-content>

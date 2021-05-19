@@ -8,35 +8,109 @@
 </ion-header>
 
 <ion-content>
-  <p class="ion-text-center">Selecione uma ONG cadastrada para maiores informações:</p>
-  <ion-content>
+  <!-- Skeleton screen -->
+  <div *ngIf="loading">
     <ion-list>
-      <ion-item routerLink="/profile-ong" routerDirection="forward">
+      <ion-item>
         <ion-avatar slot="start">
-          <img src="assets/img/ong01.png">
+          <ion-skeleton-text animated></ion-skeleton-text>
         </ion-avatar>
-  
         <ion-label>
-          <h2>Mi&Au</h2>
-          <p>Uma ong de socorro animal para cães e gatos localizada na região de são paulo!</p>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
         </ion-label>
-
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       </ion-item>
 
-      <ion-item routerLink="/profile-ong" routerDirection="forward">
+      <ion-item>
         <ion-avatar slot="start">
-          <img src="assets/img/ong03.jpeg">
+          <ion-skeleton-text animated></ion-skeleton-text>
         </ion-avatar>
-  
         <ion-label>
-          <h2>Cão sem dono</h2>
-          <p>Uma ong proteção animal para cachorros localizada em são paulo e rio de janeiro!</p>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
         </ion-label>
-
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
       </ion-item>
 
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
     </ion-list>
-  </ion-content>
+  </div>
+
+  <div class="main" *ngIf="!loading">
+    <p class="ion-text-center">Selecione uma ONG cadastrada para maiores informações:</p>
+    <ion-list>
+      <ion-item *ngFor="let ong of ongs"  [routerLink]="['/profile-ong', ong.id]" routerDirection="forward" >
+        <ion-avatar slot="start">
+          <img src="{{ apiConnection.baseImagePath }}{{ ong.ong_img }}">
+        </ion-avatar>
+  
+        <ion-label>
+          <h2>{{ ong.ong_name }}</h2>
+          <p>{{ ong.ong_description }}</p>
+        </ion-label>
+
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
