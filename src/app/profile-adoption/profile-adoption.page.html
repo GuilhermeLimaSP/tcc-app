@@ -11,36 +11,43 @@
   <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 
   <div class="container" *ngIf="!loading">
-    <img src="{{ apiConnection.baseImagePath }}{{ dataAnimal.animal_photo }}" alt="" id="animal_photo">
+    <img src="{{ apiConnection.baseImagePath }}{{ dataAnimal.animal_photo }}" alt="foto de um animal" id="animal_photo">
     <h1>{{ dataAnimal.animal_name }}</h1>
-    <span>{{ dataAnimal.animal_race}}</span>    
-  </div> 
+    <span>{{ dataAnimal.animal_race}}</span>
+  </div>
   <div class="container_info" *ngIf="!loading">
     <ion-item-divider></ion-item-divider>
-    <h3>Sobre</h3> 
+    <h3>Sobre</h3>
     <p>{{ dataAnimal.animal_description }}</p>
 
     <ion-item-divider></ion-item-divider>
-    <h3>Informações básicas</h3> 
- 
-    <ul> 
-      <ul>Idade: {{ dataAnimal.animal_age || "Não informado" }}</ul>
-      <ul>Raça: {{ dataAnimal.animal_race || "Não informado" }}</ul>
-      <ul>Peso: {{ dataAnimal.weight || "Não informado" }}</ul>
-      <ul>Porte: {{ dataAnimal.category || "Não informado" }}</ul>
-      <ul>Sexo: {{ dataAnimal.animal_gender || "Não informado" }}</ul>
+    <h3>Informações básicas</h3>
+
+    <ul>
+      <ul><strong>Idade:</strong>{{ dataAnimal.animal_age || "Não informado" }}</ul>
+      <ul><strong>Raça:</strong> {{ dataAnimal.animal_race || "Não informado" }}</ul>
+      <ul><strong>Peso:</strong> {{ dataAnimal.weight || "Não informado" }}</ul>
+      <ul><strong>Porte:</strong> {{ dataAnimal.category || "Não informado" }}</ul>
+      <ul><strong>Sexo:</strong> {{ dataAnimal.animal_gender || "Não informado" }}</ul>
     </ul>
 
     <ion-item-divider></ion-item-divider>
-    <h3>ONG {{ dataOng.ong_name  }}</h3>
-    <p>{{ dataOng.ong_description }}</p> 
-    
+    <h3>ONG {{ dataOng.ong_name }}</h3>
+    <p>{{ dataOng.ong_description }}</p>
+
     <ion-item-divider></ion-item-divider>
     <h3>Adote</h3>
-    <p>Você gostaria de adotar este animal? Entre em contato diretamente com a ONG para maiores informações:</p> 
+    <p>Você gostaria de adotar este animal? Entre em contato diretamente com a ONG para maiores informações:</p>
     <ul>
-      <li>E-mail: {{ dataOng.ong_email }}</li>
-      <li>Pessoalmente: {{ dataOng.location_address }} {{dataOng.location_number}}, {{dataOng.location_district}}, {{dataOng.location_state }}</li>
+      <li><strong>E-mail:</strong> {{ dataOng.ong_email }}</li>
+      <li><strong>Pessoalmente:</strong> {{ dataOng.location_address }} {{dataOng.location_number}},
+        {{dataOng.location_district}},
+        {{dataOng.location_state }}</li>
     </ul>
   </div>
-</ion-content> 
+  <ion-footer>
+    <div class="ion-text-center ion-padding" *ngIf="!loading">
+      <small>Copyright - Companheiro Fiel</small>
+    </div>
+  </ion-footer>
+</ion-content>

@@ -7,8 +7,8 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root'
 })
 export class ApiConnectionService {
-  baseUrl = "http://127.0.0.1/tcc/api/functions";
-  baseImagePath = "http://127.0.0.1/tcc/tcc/imgs/";
+  baseUrl = "http://localhost/tcc/api/functions";
+  baseImagePath = "http://localhost/tcc/imgs/";
 
   constructor(private http: HTTP) {
     this.http.setDataSerializer("json");

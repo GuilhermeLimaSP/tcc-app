@@ -97,15 +97,18 @@
   </div>
 
   <div class="main" *ngIf="!loading">
-    <p class="ion-text-center">Selecione uma ONG cadastrada para maiores informações:</p>
+    <p class="text-info ion-text-justify">Selecione uma ONG cadastrada para mais informações:
+    </p>
     <ion-list>
-      <ion-item *ngFor="let ong of ongs"  [routerLink]="['/profile-ong', ong.id]" routerDirection="forward" >
+      <ion-item *ngFor="let ong of ongs" [routerLink]="['/profile-ong', ong.id]" routerDirection="forward">
         <ion-avatar slot="start">
           <img src="{{ apiConnection.baseImagePath }}{{ ong.ong_img }}">
         </ion-avatar>
-  
+
         <ion-label>
-          <h2>{{ ong.ong_name }}</h2>
+          <strong>
+            <h2>{{ ong.ong_name }}</h2>
+          </strong>
           <p>{{ ong.ong_description }}</p>
         </ion-label>
 

@@ -3,6 +3,18 @@
     margin: 0;
     box-sizing: border-box;
 }
+ion-toolbar{
+    --background:#65b5ff;
+    --color:black;
+}
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+}
+li{
+    font-family: 'Roboto', sans-serif;
+    font-weight:400;
+}
 
 ion-content{
     width: 100%;
@@ -11,6 +23,8 @@ ion-content{
 
     align-items: center;
     justify-content: center;
+
+    --background:#F5FFFA;
 }
 #profile{
     border-radius: 50px;

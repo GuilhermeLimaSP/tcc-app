@@ -1,5 +1,27 @@
+ion-toolbar{
+    --background:#65b5ff;
+    --color:black;
+}
+ion-content{
+    --background:#F5FFFA;
+}
+ion-item-divider{
+    --background:#F5FFFA;
+}
+.text-info{
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+
+    padding: 0 10px 0 10px;
+}
 .item-info{
     display: flex;
     flex-direction: column;
 }
- 
+
+ion-item:nth-child(odd) {
+	--background:#FFFFFF;
+}
+ion-item:nth-child(even) {
+	--background:#F5FFFA;
+}

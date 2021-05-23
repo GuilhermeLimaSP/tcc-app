@@ -1,1 +1,18 @@
- 
+ion-toolbar{
+    --background:#65b5ff;
+    --color:black;
+}
+.button-report{
+    padding: 0 5px 0 0;
+}
+
+ion-content{
+    --background:#F5FFFA;
+}
+ion-item:nth-child(odd) {
+	--background:#FFFFFF;
+}
+ion-item:nth-child(even) {
+	--background:#F5FFFA;
+}
+
