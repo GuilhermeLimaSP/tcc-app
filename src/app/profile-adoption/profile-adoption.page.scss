@@ -1,3 +1,20 @@
+ion-content{
+    font-family: 'Roboto', sans-serif;
+    --color:black;
+
+}
+ion-toolbar{
+    --background:#65b5ff;
+    --color:black;
+}
+h3,h1{
+    font-weight: 500;
+}
+span,p,span,li{
+    font-weight: 400;
+}
+
+
 .container{
     display: flex;
     flex-direction: column;
@@ -16,11 +33,17 @@
     width: 100%;
 }  
 #animal_photo{
-    border-radius: 20px;
+    padding:10px 10px 10px 10px;
 }
 ul{
     padding: 0;
     margin: 0;
     
     text-align: left;
+}
+ion-footer{
+    background-color: #65b5ff;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
 }

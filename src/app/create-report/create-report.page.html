@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="ion-text-center">
-    <p>Preencha as seguintes informações para que o report será gerado e enviado para ONGS cadastradas.</p>
+    <p>Preencha as seguintes informações para gerar o report.</p>
   </div>
 
   <form>
@@ -24,12 +24,15 @@
 
     <ion-item>
       <ion-label position="floating">Descrição do animal</ion-label>
-      <ion-textarea clearOnEdit="true" rows="3" placeholder="Exemplo: cachorro SRD branco, com manchas pretas" ></ion-textarea>
+      <ion-textarea clearOnEdit="true" rows="3" placeholder="Exemplo: cachorro SRD branco, com manchas pretas">
+      </ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">O que acontece?</ion-label>
-      <ion-textarea clearOnEdit="true" rows="3" placeholder="Exemplo: o cachorro está com a pata direita ferida e não consegue apoiar-lá no chão"></ion-textarea>
+      <ion-textarea clearOnEdit="true" rows="3"
+        placeholder="Exemplo: o cachorro está com a pata direita ferida e não consegue apoiar-lá no chão">
+      </ion-textarea>
     </ion-item>
 
     <h4 class="ion-text-center">Localização</h4>
@@ -37,8 +40,12 @@
       <p>Precisamos saber a localização do animal, para isto, selecione uma opção:</p>
     </div>
 
-    <ion-button expand="full" (click)="openGps()"><ion-icon name="locate-outline"></ion-icon> Localização GPS</ion-button>
-    <ion-button expand="full" (click)="openAddress()"><ion-icon name="map-outline"></ion-icon> Nome da rua</ion-button>
+    <ion-button expand="full" (click)="openGps()">
+      <ion-icon name="locate-outline"></ion-icon> Localização GPS
+    </ion-button>
+    <ion-button expand="full" (click)="openAddress()">
+      <ion-icon name="map-outline"></ion-icon> Nome da rua
+    </ion-button>
 
     <br>
 
@@ -67,13 +74,21 @@
     <div class="ion-text-center">
       <p>Precisamos que você tire 2 fotos para complementar o seu report</p>
     </div>
-   
-    <h5>Foto do animal <ion-icon name="camera-outline"></ion-icon></h5>
-    <img src="assets/img/missing_photo.png" alt="">
-   
-    <h5>Ponto de referência <ion-icon name="camera-outline"></ion-icon></h5>
+
+    <h5>Foto do animal <ion-icon name="camera-outline"></ion-icon>
+    </h5>
     <img src="assets/img/missing_photo.png" alt="">
 
-    <ion-button expand="full" color="danger" (click)="createAccount(nome, email, email2, senha, senha2)">Enviar report</ion-button>
+    <h5>Ponto de referência <ion-icon name="camera-outline"></ion-icon>
+    </h5>
+    <img src="assets/img/missing_photo.png" alt="">
+
+    <ion-button expand="full" color="danger" (click)="createAccount(nome, email, email2, senha, senha2)">Enviar report
+    </ion-button>
   </form>
+  <ion-footer>
+    <div class="ion-text-center ion-padding" *ngIf="!loading">
+      <small>Copyright - Companheiro Fiel</small>
+    </div>
+  </ion-footer>
 </ion-content>
