@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 
+// Custom Imports
+import { ModalController } from '@ionic/angular';
 import { ProfileUserPage } from '../profile-user/profile-user.page';
+import { ApiConnectionService } from '../services/api-connection.service';
+import { StorageService } from '../services/storage.service';
 import { UserPasswordPage } from '../user-password/user-password.page';
 
 @Component({
@@ -10,10 +13,18 @@ import { UserPasswordPage } from '../user-password/user-password.page';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  loading: boolean =true;
+  data: Object;
 
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController,
+              public storage: StorageService, 
+              public apiConnection: ApiConnectionService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.data = await this.storage.getData();
+    console.log(this.data, typeof(this.data));
+
+    this.loading = false;
   }
 
   async openInfoChange() {
@@ -29,3 +40,4 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   }
 }
+ 

@@ -24,7 +24,7 @@ export class StorageService {
         err => console.log('Error at storing data!')
       );
   }
-
+  
   async getData() {
     return this.nativeStorage.getItem('userdata')
   }

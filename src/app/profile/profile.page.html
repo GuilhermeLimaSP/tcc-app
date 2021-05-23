@@ -9,25 +9,32 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-text-center">
-    <img src="assets/img/profile.png" alt="" id="profile">
-    <h2>Luiza Sousa</h2>    
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
+  <div *ngIf="!loading">
+    <div class="ion-text-center"> 
+      <img src="{{ apiConnection.baseImagePath }}{{ data.img }}" alt="Imagem do usuário" id="profile">
+      <h2>{{ data.name }}</h2>    
+    </div>
+
+    <ul>
+      <li><b>Informações públicas:</b></li>
+      <li>Reports enviados: {{ data.reports }}</li>
+    </ul>
+
+    <ul>
+      <li><b>Informações pessoais:</b></li>
+      <li>E-mail: {{ data.email }}</li>
+      <li>CEP: {{ data.cep }}</li>
+      <li>Celular: {{ data.phone }}</li>
+      <li>Criação da conta: {{ data.created_at }}</li>
+    </ul>
+
+    <div class="buttons">
+      <ion-button expand="block" color="danger" (click)="openPassword()">Mudar Senha</ion-button>
+      <ion-button expand="block" (click)="openInfoChange()">Atualizar Informações</ion-button>
+    </div>    
   </div>
 
-  <ul>
-    <li><b>Informações públicas:</b></li>
-    <li>Reports enviados: 11</li>
-  </ul>
-
-  <ul>
-    <li><b>Informações pessoais:</b></li>
-    <li>E-mail: luisasouza33@gmail.com</li>
-    <li>CEP: 05454-69</li>
-    <li>Criação da conta: 04/12/2020</li>
-  </ul>
-
-  <div class="buttons">
-    <ion-button expand="block" color="danger" (click)="openPassword()">Mudar Senha</ion-button>
-    <ion-button expand="block" (click)="openInfoChange()">Atualizar Informações</ion-button>
-  </div>
-</ion-content>
+</ion-content> 
+ 
