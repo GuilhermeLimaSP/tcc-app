@@ -20,32 +20,38 @@
     </div>
     <div class="profile_infos">
       <div>
-          <span>{{ dataOng.ong_rescue_count }}</span>
-          <span>Resgates</span>
+        <span>{{ dataOng.ong_rescue_count }}</span>
+        <span>Resgates</span>
       </div>
       <div>
-          <span>{{ dataOng.ong_adoptions_count }}</span>
-          <span>Adoções</span>
+        <span>{{ dataOng.ong_adoptions_count }}</span>
+        <span>Adoções</span>
       </div>
       <div>
-          <span>{{ dataOng.ong_likes }}</span>
-          <span>Curtidas</span>
+        <span>{{ dataOng.ong_likes }}</span>
+        <span>Curtidas</span>
       </div>
     </div>
     <div class="profile_others">
       <ion-item-divider></ion-item-divider>
-      <h3>Sobre</h3> 
+      <h3>Sobre</h3>
       <p>{{ dataOng.ong_description }}</p>
-      
+
       <ion-item-divider></ion-item-divider>
-      <h3>Contato</h3> 
+      <h3>Contato</h3>
       <p>Você pode entrar em contato com a ONG pelos seguintes meios:</p>
       <ul>
-        <li>E-mail: {{ dataOng.ong_email }}</li>
-        <li>Pessoalmente: {{ dataOng.location_address }} {{dataOng.location_number}}, {{dataOng.location_district}}, {{dataOng.location_state }}</li>
-      </ul>    
+        <li><strong>E-mail:</strong> {{ dataOng.ong_email }}</li>
+        <li><strong>Pessoalmente:</strong> {{ dataOng.location_address }} {{dataOng.location_number}},
+          {{dataOng.location_district}},
+          {{dataOng.location_state }}</li>
+      </ul>
 
     </div>
   </div>
+  <ion-footer>
+    <div class="ion-text-center ion-padding" *ngIf="!loading">
+      <small>Copyright - Companheiro Fiel</small>
+    </div>
+  </ion-footer>
 </ion-content>
- 

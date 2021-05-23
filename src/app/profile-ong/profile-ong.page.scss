@@ -1,3 +1,7 @@
+ion-toolbar{
+    --background:#65b5ff;
+    --color:black;
+}
  .profile_one{
     display: flex;
     flex-direction: row;
@@ -33,7 +37,19 @@
     }
 
 }
+h3,h1{
+    font-weight: 500;
+}
+span,p,span,li{
+    font-weight: 400;
+}
 
 .profile_others{
     padding: 14px;
+}
+ion-footer{
+    background-color: #65b5ff;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
 }

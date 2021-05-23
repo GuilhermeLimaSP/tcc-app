@@ -97,20 +97,26 @@
   </div>
 
   <div class="main" *ngIf="!loading">
-    <p class="ion-text-center">Selecione um animal para maiores informações:</p>
+    <p class="text-info ion-text-justify">
+      Estamos muito felizes de ter você aqui! Conheça melhor cada um deles e os deixem te encantar.
+      <strong>Selecione um animal para mais informações:</strong>
+    </p>
     <ion-list>
-      <ion-item *ngFor="let animal of animals" [routerLink]="['/profile-adoption', animal.id]" routerDirection="forward">
+      <ion-item *ngFor="let animal of animals" [routerLink]="['/profile-adoption', animal.id]"
+        routerDirection="forward">
         <ion-avatar slot="start">
           <img src="{{ apiConnection.baseImagePath }}{{ animal.animal_photo }}">
         </ion-avatar>
-   
+
         <ion-label>
-          <h2>{{ animal.animal_name }}</h2>
+          <strong>
+            <h2>{{ animal.animal_name }}</h2>
+          </strong>
           <p>{{ animal.animal_race }}, {{ animal.animal_age || "idade não informada" }}</p>
         </ion-label>
-   
+
         <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       </ion-item>
-    </ion-list> 
+    </ion-list>
   </div>
 </ion-content>
