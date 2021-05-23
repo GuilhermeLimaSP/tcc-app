@@ -7,17 +7,20 @@
 <ion-content>
   <form>
     <ion-item>
-      <ion-label position="stacked">E-mail</ion-label>
-      <ion-input type="text" name="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label position="stacked">Seu CEP</ion-label>
       <ion-input type="text" name="cep" [(ngModel)]="cep"></ion-input>
     </ion-item> 
+    <ion-item>
+      <ion-label position="stacked">Celular</ion-label>
+      <ion-input type="text" name="phone" [(ngModel)]="phone"></ion-input>
+    </ion-item>   
+    <ion-item>
+      <ion-label position="stacked">Confirme sua senha atual</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
+    </ion-item>   
     
-    
-    <ion-button expand="block" color="success">Atualizar</ion-button>
+    <ion-button expand="block" color="success" (click)="updateInfos(password, cep, phone)">Atualizar</ion-button>
     <ion-button expand="block" color="danger" (click)="dismiss()">Sair</ion-button>
   </form>
-</ion-content>
- 
+</ion-content> 
+  

@@ -50,12 +50,9 @@ export class LoginPage implements OnInit {
           this.email = "";
           this.password = "";
 
-          // Armazena dados de login de forma interna
-          const data = { 
-            name: api_response.nome, 
-            email: api_response.email 
-          }
-          this.storage.setData(data);
+          // Remove o campo 'message' do objeto e guarda os dados
+          delete api_response['message'];
+          this.storage.setData(api_response);
 
           // Navegar para página de adoções
           this.goTo('adoption');

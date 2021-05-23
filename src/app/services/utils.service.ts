@@ -13,7 +13,7 @@ export class UtilsService {
     return re.test(String(email).toLowerCase());
   }
   validation_cep(cep: string){
-    const re = /^\d{5}-\d{3}$/;
+    const re = /(\d{5})-?(\d{3})/;
 
     return re.test(cep);
   }

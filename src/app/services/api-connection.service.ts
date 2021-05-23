@@ -66,6 +66,39 @@ export class ApiConnectionService {
       id: id
     }, {});
   }
+
+  changePassword(email: string, current_password: string, new_password: string){
+    const headers = {
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+    const requestUrl = `${this.baseUrl}/user/update_password.php`;
+
+    const data = { 
+      'email': email,
+      'current_pwd': current_password, 
+      'new_pwd': new_password
+    }
+
+    return this.http.put(requestUrl, data, headers);   
+  }
+  
+  changeInfos(password: string, email: string, cep: string, phone: string){
+    const headers = {
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+    const requestUrl = `${this.baseUrl}/user/update_info.php`;
+
+    const data = {  
+      'current_pwd': password,
+      'email': email,
+      'cep': cep, 
+      'phone': phone
+    }
+
+    console.log("sending data")
+    console.log(data);
+    return this.http.put(requestUrl, data, headers);      
+  }
   
 }
  
