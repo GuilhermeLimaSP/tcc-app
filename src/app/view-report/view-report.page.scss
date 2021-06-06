@@ -45,8 +45,17 @@
 .progressbar li a.active:before {
 	border-color: green;
 }
+.progressbar li a.active-failed {
+	color: red;
+}
+.progressbar li a.active-failed:before {
+	border-color: red;
+}
 .progressbar li a.none-active:after {
 	background-color: green !important;
+}
+.progressbar li a.none-active-failed:after {
+	background-color: red !important;
 }
 li {
 	list-style: none;

@@ -7,11 +7,12 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root'
 })
 export class ApiConnectionService {
-  baseUrl = "http://localhost/tcc/api/functions";
-  baseImagePath = "http://localhost/tcc/imgs/";
+  baseUrl = "http://192.168.0.108/tcc/tcc/api/functions";
+  baseImagePath = "http://192.168.0.108/tcc/tcc/imgsUpdate/";
+  google_key = "AIzaSyD6xzSfe7eqe_JPxnA9HZj1EB4hpl4UAn4";
 
   constructor(private http: HTTP) {
-    this.http.setDataSerializer("json");
+    // this.http.setDataSerializer("json");
   }
 
   login(email: string, password: string){
@@ -22,7 +23,6 @@ export class ApiConnectionService {
       pwd: password
     }, {});
   }
-
   createAccount(name: string, email: string, password: string, img: string, phone: string, cep: string){
     const headers = {
       "Content-Type": "application/json; charset=UTF-8"
@@ -37,6 +37,8 @@ export class ApiConnectionService {
       'phone': phone, 
       'cep': cep
     }
+
+    this.http.setDataSerializer('json');
 
     return this.http.post(requestUrl, data, headers);
   }
@@ -79,6 +81,8 @@ export class ApiConnectionService {
       'new_pwd': new_password
     }
 
+    this.http.setDataSerializer('json');
+
     return this.http.put(requestUrl, data, headers);   
   }
   
@@ -97,8 +101,54 @@ export class ApiConnectionService {
 
     console.log("sending data")
     console.log(data);
+    
+    this.http.setDataSerializer('json');
+
     return this.http.put(requestUrl, data, headers);      
   }
-  
+
+  createReport(author_id: Number, animal_type: string, animal_description: string, animal_situation: string, animal_photo: any, location_cep: string, location_address: string, location_number: string, location_district: string, location_state: string, location_photo: string, location_observation: string){
+    const headers = {
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+    const requestUrl = `${this.baseUrl}/report/create.php`;
+
+    const data = {
+      'author_id': author_id,
+      'animal_type': animal_type,
+      'animal_description': animal_description, 
+      'animal_situation': animal_situation, 
+      'animal_photo': animal_photo, 
+      'location_cep': location_cep,
+      'location_address': location_address,
+      'location_number': location_number,
+      'location_district': location_district,
+      'location_state': location_state,
+      'location_photo': location_photo,
+      'location_observation': location_observation
+    }
+
+    this.http.setDataSerializer('json');
+
+    console.log("sending");
+    console.log(data);
+
+    return this.http.post(requestUrl, data, headers); 
+  }
+  getAllUserReports(author_id: String){
+    const requestUrl = `${this.baseUrl}/report/get_all.php`;
+
+    return this.http.get(requestUrl, {
+      id: author_id
+    }, {});
+  }
+  getReport(report_id: String){
+    const requestUrl = `${this.baseUrl}/report/get.php`;
+
+    return this.http.get(requestUrl, {
+      id: report_id
+    }, {});
+  }
+
 }
  

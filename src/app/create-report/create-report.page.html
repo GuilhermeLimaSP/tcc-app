@@ -16,31 +16,36 @@
     <h4 class="ion-text-center">Sobre o animal</h4>
     <ion-item>
       <ion-label>Qual animal?</ion-label>
-      <ion-select okText="Ok" cancelText="Voltar">
+      <ion-select name="animal_type" [(ngModel)]="animal_type" okText="Ok" cancelText="Voltar">
         <ion-select-option value="dog">Cachorro</ion-select-option>
         <ion-select-option value="cat">Gato</ion-select-option>
+        <ion-select-option value="cat">Outros</ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item> 
 
     <ion-item>
       <ion-label position="floating">Descrição do animal</ion-label>
-      <ion-textarea clearOnEdit="true" rows="3" placeholder="Exemplo: cachorro SRD branco, com manchas pretas">
+      <ion-textarea name="animal_description" [(ngModel)]="animal_description" clearOnEdit="true" rows="3" placeholder="Exemplo: cachorro SRD branco, com manchas pretas">
       </ion-textarea>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">O que acontece?</ion-label>
-      <ion-textarea clearOnEdit="true" rows="3"
-        placeholder="Exemplo: o cachorro está com a pata direita ferida e não consegue apoiar-lá no chão">
+      <ion-label position="floating">Qual é a situação do animal?</ion-label>
+      <ion-textarea 
+        clearOnEdit="true" 
+        rows="3"
+        placeholder="Exemplo: o cachorro está com a pata direita ferida e não consegue apoiar-lá no chão"
+        name="animal_situation"
+        [(ngModel)]="animal_situation">
       </ion-textarea>
     </ion-item>
 
     <h4 class="ion-text-center">Localização</h4>
     <div class="ion-text-center">
-      <p>Precisamos saber a localização do animal, para isto, selecione uma opção:</p>
+      <p>Precisamos saber a localização do animal, para isto, selecione uma opção ou preencha manualmente:</p>
     </div>
 
-    <ion-button expand="full" (click)="openGps()">
+    <ion-button expand="full" (click)="runGps()" [disabled]="gpsLoading">
       <ion-icon name="locate-outline"></ion-icon> Localização GPS
     </ion-button>
     <ion-button expand="full" (click)="openAddress()">
@@ -48,44 +53,65 @@
     </ion-button>
 
     <br>
-
+ 
     <ion-item>
       <ion-label position="floating">Cep</ion-label>
-      <ion-input type="text" name="cep" [(ngModel)]="cep"></ion-input>
+      <ion-input type="text" name="location_cep" [(ngModel)]="location_cep"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Rua</ion-label>
-      <ion-input type="text" name="address" [(ngModel)]="address"></ion-input>
+      <ion-input type="text" name="location_address" [(ngModel)]="location_address"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Número próximo</ion-label>
-      <ion-input type="text" name="address_number" [(ngModel)]="address_number"></ion-input>
+      <ion-input type="text" name="location_number" [(ngModel)]="location_number"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Bairro</ion-label>
-      <ion-input type="text" name="address_district" [(ngModel)]="address_district"></ion-input>
+      <ion-input type="text" name="location_district" [(ngModel)]="location_district"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Estado</ion-label>
-      <ion-input type="text" name="address_state" [(ngModel)]="address_state"></ion-input>
+      <ion-input type="text" name="location_state" [(ngModel)]="location_state"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Observação sobre a localização</ion-label>
+      <ion-textarea 
+        clearOnEdit="true" 
+        rows="3" 
+        placeholder="Exemplo: Próximo ao bar do seu joão, a direita da primeira saida." 
+        name="location_observation"
+        [(ngModel)]="location_observation">
+      </ion-textarea>
+    </ion-item>
+
 
     <h4 class="ion-text-center">Imagens</h4>
     <div class="ion-text-center">
       <p>Precisamos que você tire 2 fotos para complementar o seu report</p>
     </div>
 
-    <h5>Foto do animal <ion-icon name="camera-outline"></ion-icon>
+    <h5>Foto do animal <ion-icon name="camera-outline" id="photo_animal_icon" (click)="takePhoto($event.target)"></ion-icon>
     </h5>
-    <img src="assets/img/missing_photo.png" alt="">
+    <ion-card [hidden]="!photo_animal">
+      <img src="{{photo_animal}}" name="photo_animal" id="photo_animal" alt="Imagem de foto do animal" (click)="takePhoto($event.target)">
+    </ion-card>
 
-    <h5>Ponto de referência <ion-icon name="camera-outline"></ion-icon>
+    <h5>Ponto de referência <ion-icon name="camera-outline" id="photo_reference_icon" (click)="takePhoto($event.target)"></ion-icon>
     </h5>
-    <img src="assets/img/missing_photo.png" alt="">
+    <ion-card [hidden]="!photo_reference">
+      <img src="{{photo_reference}}" name="photo_reference" id="photo_reference" alt="Imagem de referencia para localização" (click)="takePhoto($event.target)">
+    </ion-card>
 
-    <ion-button expand="full" color="danger" (click)="createAccount(nome, email, email2, senha, senha2)">Enviar report
+    <ion-button 
+      expand="full" 
+      color="danger" 
+      (click)="createReport(animal_type, animal_description, animal_situation, location_cep, location_address, location_number, location_district, location_state, location_observation)" 
+      [disabled]="submit_button_text != 'Enviar'">
+        {{submit_button_text}}
     </ion-button>
-  </form>
+  </form> 
+
   <ion-footer>
     <div class="ion-text-center ion-padding" *ngIf="!loading">
       <small>Copyright - Companheiro Fiel</small>

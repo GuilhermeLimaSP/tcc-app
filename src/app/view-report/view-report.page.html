@@ -8,43 +8,48 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-text-center">
-    <p>Este é o resumo do report #5434:</p>
-  </div>
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 
-  <div class="container_text">
-    <h2>Status</h2>
-    <p><b>Situação: </b><ion-icon name="time-outline"></ion-icon> Aguardando resgate</p>
-  </div>
+  <div class="container" *ngIf="!loading">
+    <div class="ion-text-center">
+      <p>Este é o resumo do report #{{ dataReport.id }}:</p>
+    </div>
 
-  <div class="container">
-    <ul class="progressbar">
-      <li><a href="#" class="active">Report Enviado</a></li>
-      <li><a href="#" class="active none-active">Aceito por ONG</a></li>
-      <li><a href="#">Resgatado</a></li>
-    </ul>
-  </div>
+    <div class="container_text">
+      <h2>Status</h2>
+      <p><b>Situação: </b><ion-icon name="{{state_icon}}"></ion-icon> {{ state }}</p>
+      <p>{{state_comments}}</p>
+    </div>
 
-  <br><br><br><br><br>
-  <div class="container_text">
-    <h2>Animal:</h2>
-    <p><b>Tipo:</b> Cachorro</p>
-    <p><b>Descrição:</b> Cachorro SRD preto com manchas brancas</p>
-    <p><b>Relato:</b> Cachorro está com a pata ferida</p>
+    <div class="container">
+      <ul class="progressbar">
+        <li><a href="#" class="{{progressBarClassOne}}">Report Enviado</a></li>
+        <li><a href="#" class="{{progressBarClassTwo}}">Aceito por ONG</a></li>
+        <li><a href="#" class="{{progressBarClassThree}}">Resgatado</a></li>
+      </ul>
+    </div>
+  
+    <br><br><br><br><br>
+    <div class="container_text">
+      <h2>Animal:</h2>
+      <p><b>Tipo:</b> {{ animal_type }}</p>
+      <p><b>Descrição:</b> {{ dataReport.animal_description }}</p>
+      <p><b>Relato:</b> {{ dataReport.animal_situation }}</p>
 
-    <h2>Localização:</h2>
-    <p><b>CEP:</b> 054054-34</p>
-    <p><b>Rua:</b> Rua são paulo</p>
-    <p><b>Número próximo:</b> 766</p>
-    <p><b>Bairro:</b> Jardim Capela</p>
-    <p><b>Estado:</b> São Paulo, SP</p>
+      <h2>Localização:</h2>
+      <p><b>CEP:</b> {{ dataReport.location_cep }}</p>
+      <p><b>Rua:</b> {{ dataReport.location_address }}</p>
+      <p><b>Número próximo:</b> {{ dataReport.location_district }}</p>
+      <p><b>Bairro:</b> {{ dataReport.location_district }}</p>
+      <p><b>Estado:</b> {{ dataReport.location_state }}</p>
 
-    <h2>Fotos enviadas</h2>
-    <h5>Foto do animal</h5>
-    <img src="assets/img/missing_photo.png" alt="">
-   
-    <h5>Ponto de referência</h5>
-    <img src="assets/img/missing_photo.png" alt="">
+      <h2>Fotos enviadas</h2>
+      <h5>Foto do animal</h5>
+      <img src="{{ apiConnection.baseImagePath }}{{ dataReport.animal_photo }}" alt="">
+    
+      <h5>Ponto de referência</h5>
+      <img src="{{ apiConnection.baseImagePath }}{{ dataReport.location_photo }}" alt="">
+    </div>
   </div>
 </ion-content>
  

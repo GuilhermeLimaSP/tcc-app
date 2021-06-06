@@ -8,11 +8,21 @@
   <p>Por favor, forneça as seguintes informações:</p>
 
   <form>
-    <ion-label position="floating">Nome da rua</ion-label>
-    <ion-input type="text" name="address" [(ngModel)]="address"></ion-input>
+    <ion-item>
+      <ion-label position="floating">Nome da rua</ion-label>
+      <ion-input type="text" name="address_name" [(ngModel)]="address_name" (ionInput)="updateSearchResults()"></ion-input>
+    </ion-item> 
 
-    <ion-button color="primary">Prosseguir</ion-button>
+    <ion-list *ngIf="autocompleteItems?.length > 0">
+      <p><b>Selecione a rua abaixo para continuar:</b></p>
+      <ion-item *ngFor="let item of autocompleteItems" (click)="SelectSearchResult(item)" > 
+        {{ item.description }}
+      </ion-item>
+    </ion-list>
+
+    <p *ngIf="autocompleteItems?.length == 0 && address_name"><b>Sem resultados para a sua busca</b></p>
+    
     <ion-button color="danger" (click)="dismiss()">Sair</ion-button>
   </form>
 </ion-content>
- 
+  

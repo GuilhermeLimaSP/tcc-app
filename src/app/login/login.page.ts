@@ -24,6 +24,9 @@ export class LoginPage implements OnInit {
               private storage: StorageService) { }
 
   ngOnInit() {
+    // DEBUG ONLY
+    this.email = "edu@edu.com";
+    this.password = "adminadmin";
   }
 
   login(email: string, password: string){
@@ -40,6 +43,8 @@ export class LoginPage implements OnInit {
     // Conexão com a API
     this.apiConnection.login(email, password)
       .then((response) => {
+        console.log(response);
+        
         const api_response = JSON.parse(response.data);
         console.log(api_response);
 
@@ -61,6 +66,8 @@ export class LoginPage implements OnInit {
         }
       })
       .catch((error) => {
+        console.log(error);
+
         const api_error = JSON.parse(error.error);
         console.log(api_error);
 
