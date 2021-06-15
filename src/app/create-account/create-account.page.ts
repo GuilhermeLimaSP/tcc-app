@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 // Custom Imports (Services)
 import { ApiConnectionService } from '../services/api-connection.service';
 import { UtilsService } from '../services/utils.service';
 import { AlertsService } from '../services/alerts.service';
+
+// Ionic Imports
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-account',
@@ -16,11 +19,36 @@ export class CreateAccountPage implements OnInit {
   constructor(private router: Router,
               private utils: UtilsService,
               private apiConnection: ApiConnectionService,
-              public alertService: AlertsService) { }
+              public alertService: AlertsService,
+              public menuCtrl: MenuController) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   ngOnInit() {
   }
 
+  /*  Método: ionViewWillEnter 
+      Parâmetros: []
+      Objetivo: Dispara eventos quando a página está prestes a se tornar ativa
+  */
+  ionViewWillEnter() {
+    // Desativa o menu para está página
+    this.menuCtrl.enable(false);
+  }
+
+  /*  Método: createAccount 
+      Parâmetros: [
+        name: Nome da pessoa;
+        email: E-mail da pessoa;
+        password: Senha da pessoa;
+        password2: Confirmação de senha;
+        cep: Cep da pessoa;
+        phone: Telefone da pessoa
+      ]
+      Objetivo: Faz a validações do dados e envia a requisição para criar a conta via API.
+  */
   createAccount(name: string, email: string, password: string, password2: string, cep: string, phone: string){
     // Validações
     if(!name){
@@ -58,6 +86,7 @@ export class CreateAccountPage implements OnInit {
         const api_response = JSON.parse(response.data);
         console.log(api_response);
 
+        // Verifica a resposta da API
         if(api_response.message == "sucess_user_created"){
           this.alertService.showAlert("Conta criada", "Sua conta foi criada com sucesso!");      
 
@@ -71,6 +100,7 @@ export class CreateAccountPage implements OnInit {
         const api_error = JSON.parse(error.error);
         console.log(api_error);
 
+        // Verifica possiveis erros
         if(api_error.message == "email_already_used"){
           this.alertService.showAlert("E-mail inválido", "O e-mail inserido já está em uso, tente outro e-mail!");
         }else if(api_error.message == "failed_user_creation"){
@@ -81,6 +111,12 @@ export class CreateAccountPage implements OnInit {
       });
   }
 
+  /*  Método: goTo 
+      Parâmetros: [
+        page: Página para redirecionar
+      ]
+      Objetivo: Faz a navegação para outra página usando o router
+  */ 
   goTo(page: string){ 
     this.router.navigateByUrl("/" + page);
   }

@@ -1,8 +1,3 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>Fazer Login</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 <ion-content>
   <div class="ion-text-center">
     <img src="assets/img/logo.png" alt="Login" id="logo" />
@@ -24,9 +19,9 @@
       </ion-item>
 
       <p class="ion-text-center" id="passwordRecover"><a (click)="changePassword()">Esqueceu sua senha?</a></p>
-      <ion-button expand="block" color="success" (click)="login(email, password)">Entrar</ion-button>
+      <ion-button expand="block" color="success" (click)="login(email, password)" [disabled]="!ConnectionWithApi">Entrar</ion-button>
       <p class="ion-text-center">ou</p>
-      <ion-button expand="block" color="dark" (click)="goTo('create-account');">Crie sua conta</ion-button>
+      <ion-button expand="block" color="dark" (click)="goTo('create-account');" [disabled]="!ConnectionWithApi">Crie sua conta</ion-button>
 
     </form> 
   </div>
@@ -34,6 +29,6 @@
 
 <ion-footer>
   <div class="ion-text-center ion-padding">
-    <small>Copyright - Companheiro Animal</small>
+    <small>Copyright - Companheiro Fiel</small>
   </div>
 </ion-footer>

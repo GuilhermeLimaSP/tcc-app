@@ -12,5 +12,7 @@ export class AppComponent {
     { title: 'Perfil', url: '/profile', icon: 'person-circle-outline' },
     { title: 'Sair', url: '../login', icon: 'exit-outline'}
   ];
+  
   constructor() {}
 }
+ 

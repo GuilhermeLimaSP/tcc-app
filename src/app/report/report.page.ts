@@ -10,41 +10,62 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['./report.page.scss'],
 })
 export class ReportPage implements OnInit {
-  reports = new Array();
-  loading: boolean = true;
+  reports = new Array(); // Variavel de reports
+  loading: boolean = true; // Variavel de carregamento
+  author_id: any; // Id do usuário
 
   constructor(private storage: StorageService,
               private apiConnection: ApiConnectionService) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */              
   async ngOnInit() {
-    // Get logged user
+    // Obter usuário logado
     const data = await this.storage.getData();
     console.log("Connected userdata:");
     console.log(data);
 
-    // User Id
-    const author_id = data.id;
+    // Salvar usuário logado 
+    this.author_id = data.id;
 
-    // Get Reports 
-    this.apiConnection.getAllUserReports(author_id)
-      .then((response)=>{
-        this.reports = JSON.parse(response.data);
+    // Atualizar Reports
+    this.reportUpdate();
+  }
 
-        console.log(this.reports);
+  /*  Método: ionViewWillEnter 
+      Parâmetros: []
+      Objetivo: Dispara eventos quando a página está prestes a se tornar ativa
+  */
+  ionViewWillEnter() {
+    // Atualiza os reports da página
+    this.reportUpdate();
+  }
 
-        // disable loading bar (fake delay)
-        setTimeout(() => {
-          this.loading = false;
-        }, 1000)
-      })
-      .catch((error)=>{
-        const api_error = JSON.parse(error.error);
-        console.log(error);  
+  /*  Método: reportUpdate 
+      Parâmetros: []
+      Objetivo: Faz a chamada a API obtendo os reports do usuário
+  */
+  reportUpdate(){
+    // Ativa os sistemas de carregamento
+    this.loading = true;
 
-        setTimeout(() => {
-          this.loading = false;
-        }, 1000)    
-      })
-    }
+    // Faz a chamada a api para obter os reports do usuário
+    this.apiConnection.getAllUserReports(this.author_id)
+    .then((response)=>{
+      this.reports = JSON.parse(response.data);
+      console.log(this.reports);
+
+      // Desativa os sistemas de carregamento
+      this.loading = false;
+    })
+    .catch((error)=>{
+      console.log(error);  
+
+      // Desativa os sistemas de carregamento
+      this.loading = false;
+    })
+  }
 
 }

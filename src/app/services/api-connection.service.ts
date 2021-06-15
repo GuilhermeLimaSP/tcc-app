@@ -135,6 +135,7 @@ export class ApiConnectionService {
 
     return this.http.post(requestUrl, data, headers); 
   }
+
   getAllUserReports(author_id: String){
     const requestUrl = `${this.baseUrl}/report/get_all.php`;
 
@@ -142,12 +143,19 @@ export class ApiConnectionService {
       id: author_id
     }, {});
   }
+
   getReport(report_id: String){
     const requestUrl = `${this.baseUrl}/report/get.php`;
 
     return this.http.get(requestUrl, {
       id: report_id
     }, {});
+  }
+
+  PingApi(){
+    const requestUrl = `${this.baseUrl}/utils/ping.php`;
+
+    return this.http.get(requestUrl, {}, {});
   }
 
 }

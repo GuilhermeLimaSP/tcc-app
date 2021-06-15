@@ -101,7 +101,9 @@
 
   <div *ngIf="!loading">
     <div *ngIf="reports.length > 0">
-      <p class="ion-text-center">Selecione um report para maiores informações:</p>
+      <p class="ion-text-center">
+        <strong>Selecione um report para maiores informações:</strong>
+      </p>
   
       <ion-list>
         <ion-item *ngFor="let report of reports" [routerLink]="['/view-report', report.id]" routerDirection="forward">
@@ -116,7 +118,7 @@
     </div>
     
     <div *ngIf="reports.length == 0">
-      <p class="ion-text-center">Você ainda não enviou nenhum report</p>
+      <p class="ion-text-center">Você ainda não enviou nenhum report, você pode criar um report clicando no botão vermelho no canto superior direio.</p>
     </div>
   </div>
 </ion-content>

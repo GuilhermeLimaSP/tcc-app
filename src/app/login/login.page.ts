@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,6 +7,9 @@ import { ApiConnectionService } from '../services/api-connection.service';
 import { StorageService } from '../services/storage.service';
 import { UtilsService } from '../services/utils.service';
 
+// Ionic Import
+import { MenuController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,17 +18,70 @@ import { UtilsService } from '../services/utils.service';
 export class LoginPage implements OnInit {
   email: string;
   password: string;
+  ConnectionWithApi = false;
 
   constructor(private router: Router,
               private alertService: AlertsService,
               private apiConnection: ApiConnectionService,
               private utils: UtilsService,
-              private storage: StorageService) { }
+              private storage: StorageService,
+              public menuCtrl: MenuController) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   ngOnInit() {
+    this.apiConnection.PingApi()
+      .then((response) => {
+        const api_response = JSON.parse(response.data);
+        console.log(api_response);
+
+        if(api_response.message = "pong"){
+          this.ConnectionWithApi = true;
+        }
+      })  
+      .catch((error) => {
+        console.log(error);
+        this.alertService.showAlert("Falha na conexão com os servidores", "Não conseguimos conexão com o servidor, verifique se sua conexão com a rede está ativa e reinicie o aplicativo.");
+
+        this.watchConnection()
+      });
+    
+
     // DEBUG ONLY
     this.email = "edu@edu.com";
     this.password = "adminadmin";
+  }
+
+  /*  Método: ionViewWillEnter 
+      Parâmetros: []
+      Objetivo: Dispara eventos quando a página está prestes a se tornar ativa
+  */
+  ionViewWillEnter() {
+    // Desativa o menu para está página
+    this.menuCtrl.enable(false);
+  }
+
+  watchConnection(){
+      var timer = setInterval(() =>{
+        console.log("Trying connection with server...")
+        
+        this.apiConnection.PingApi()
+          .then((response) => {
+            const api_response = JSON.parse(response.data);
+            console.log(api_response);
+    
+            if(api_response.message = "pong"){
+              this.alertService.showAlert("Conectado aos servidores!", "A conexão foi feita com sucesso, você já pode usar o aplicativo.");
+              this.ConnectionWithApi = true;
+
+              clearInterval(timer);
+            }
+          })  
+          .catch(() => {
+          });
+       }, 3000);
   }
 
   login(email: string, password: string){

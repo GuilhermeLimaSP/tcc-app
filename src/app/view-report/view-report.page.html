@@ -28,7 +28,7 @@
         <li><a href="#" class="{{progressBarClassThree}}">Resgatado</a></li>
       </ul>
     </div>
-  
+   
     <br><br><br><br><br>
     <div class="container_text">
       <h2>Animal:</h2>
@@ -49,6 +49,11 @@
     
       <h5>Ponto de referência</h5>
       <img src="{{ apiConnection.baseImagePath }}{{ dataReport.location_photo }}" alt="">
+
+      <div *ngIf="animal_report_image != ''">
+        <h5>Imagem após resgate</h5>
+        <img src="{{ apiConnection.baseImagePath }}{{ animal_report_image }}" alt="">
+      </div>
     </div>
   </div>
 </ion-content>

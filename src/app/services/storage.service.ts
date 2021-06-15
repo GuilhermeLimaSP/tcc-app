@@ -9,8 +9,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class StorageService {
   constructor(private nativeStorage: NativeStorage) {
   }
-
-  
+ 
   /** Modelo da data
     const data = { 
       name: api_response.nome, 

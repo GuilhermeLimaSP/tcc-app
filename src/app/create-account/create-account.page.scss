@@ -10,7 +10,6 @@ form{
 }
 ion-content{
     --background: url('../../assets/img/BGregister.jpg') no-repeat center center / cover !important;
-    //--ion-background-color: #4682B4;
     --ion-color: white;
 }
 h3{
@@ -22,20 +21,11 @@ ion-item{
     color: white;
 
 }
-/*.register{
-    height: 74vh;
-    width:100%;
-    max-width: 500px;
-    background-color: #346899;
-    right: 0;
-    left: 0;
-    position: fixed;
-    margin: auto;
-    border-top-left-radius:46px ;
-    border-top-right-radius: 46px;
-}*/
+.register h3{
+    color: white !important;
+}
 ion-footer{
     background-color:#346899;
     color: white;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

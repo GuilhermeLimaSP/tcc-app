@@ -20,7 +20,8 @@ export class ViewReportPage implements OnInit {
   state_comments: any = "";
   state_icon: any = "";
 
-  animal_type: any = "";
+  animal_type: any = ""; 
+  animal_report_image: string = "";
 
   constructor(private route : ActivatedRoute,
               private apiConnection: ApiConnectionService) { }
@@ -38,16 +39,22 @@ export class ViewReportPage implements OnInit {
 
         this.stepBarAlgorithm(this.dataReport.report_situation);
         this.TransformHumanFields(this.dataReport);
-        // fake loader
+
+        if(this.dataReport['report_situation'] == "rescued"){
+          this.animal_report_image = this.dataReport['report_img'];
+        }
+ 
+        // Fake Loader
         setTimeout(()=>{
           this.loading = false;
         }, 1500)
-      })
+      }) 
       .catch((error)=>{
         const api_error = JSON.parse(error.error);
         console.log(api_error);       
       });
   }
+
   stepBarAlgorithm(state: any){
     // Sucess Progress
     if(state == "pending"){
@@ -87,6 +94,7 @@ export class ViewReportPage implements OnInit {
       this.state_icon = "close-circle-outline";
     }
   }
+
   TransformHumanFields(data: any){
     switch (data.animal_type) {
       case 'cat':
