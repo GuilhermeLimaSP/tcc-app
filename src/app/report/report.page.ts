@@ -31,7 +31,7 @@ export class ReportPage implements OnInit {
     this.author_id = data.id;
 
     // Atualizar Reports
-    this.reportUpdate();
+    this.UpdateList(null);
   }
 
   /*  Método: ionViewWillEnter 
@@ -40,16 +40,20 @@ export class ReportPage implements OnInit {
   */
   ionViewWillEnter() {
     // Atualiza os reports da página
-    this.reportUpdate();
+    this.UpdateList(null);
   }
 
-  /*  Método: reportUpdate 
-      Parâmetros: []
-      Objetivo: Faz a chamada a API obtendo os reports do usuário
+  /*  Método: UpdateList 
+      Parâmetros: [
+        event: evento vindo do html ou nulo caso não haja
+      ]
+      Objetivo: Atualiza a lista do html com dados novos, caso haja.
   */
-  reportUpdate(){
+  UpdateList(event: any){
     // Ativa os sistemas de carregamento
-    this.loading = true;
+    if(!this.loading){
+      this.loading = true;
+    }
 
     // Faz a chamada a api para obter os reports do usuário
     this.apiConnection.getAllUserReports(this.author_id)
@@ -59,12 +63,22 @@ export class ReportPage implements OnInit {
 
       // Desativa os sistemas de carregamento
       this.loading = false;
+
+      // Completa o evento do IonLoader
+      if(event){
+        event.target.complete();
+      }
     })
     .catch((error)=>{
       console.log(error);  
 
       // Desativa os sistemas de carregamento
       this.loading = false;
+
+      // Completa o evento do IonLoader
+      if(event){
+        event.target.complete();
+      }
     })
   }
 

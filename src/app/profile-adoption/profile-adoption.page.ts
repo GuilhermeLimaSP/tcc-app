@@ -23,14 +23,18 @@ export class ProfileAdoptionPage implements OnInit {
     const id = this.route.snapshot.params.id;
     console.log(`Id of animal: ${id}`);
 
-    // Get Animals
+    // Obtém os animais através da API
     this.apiConnection.getAnimal(id)
     .then((response)=>{
+      // Salva os dados do animal
       this.dataAnimal = JSON.parse(response.data);
       console.log(this.dataAnimal);
-      // Get Ong
+
+      // Caso consiga pegar o animal, também é necessário pegar informações da ong
+      // Então fazemos outra requisição a API dentro do THEN da primeira requisição
       this.apiConnection.getOng(this.dataAnimal.ong_id)
       .then((response)=>{
+        // Salva os dados da ONG
         this.dataOng = JSON.parse(response.data);
         console.log(this.dataOng);
 
@@ -40,11 +44,13 @@ export class ProfileAdoptionPage implements OnInit {
         }, 500)
       })
       .catch((error)=>{
+        // Em caso de erro ao obter informações da ONG
         const api_error = JSON.parse(error.error);
         console.log(api_error);       
       })
     })
     .catch((error)=>{
+      // Em caso de erro ao obter informações do animal
       const api_error = JSON.parse(error.error);
       console.log(api_error);       
     });

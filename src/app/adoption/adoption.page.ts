@@ -32,28 +32,53 @@ export class AdoptionPage implements OnInit {
     console.log("Connected userdata:");
     console.log(data);
 
-    // Obtem os animais da API
-    this.apiConnection.getAnimals()
-      .then((response)=>{
-        this.animals = JSON.parse(response.data);
-        console.log(this.animals);
-
-        // Desativa a variavel de carregando
-        this.loading = false;
-      })
-      .catch((error)=>{
-        const api_error = JSON.parse(error.error);
-        console.log(api_error);       
-      })
+    this.UpdateList(null);
   }
 
   /*  Método: ionViewWillEnter 
       Parâmetros: []
       Objetivo: Dispara eventos quando a página está prestes a se tornar ativa
   */
-      ionViewWillEnter() {
-        // Desativa o menu para está página
-        this.menuCtrl.enable(true);
+  ionViewWillEnter() {
+    // Desativa o menu para está página
+    this.menuCtrl.enable(true);
+  }
+
+  /*  Método: UpdateList 
+      Parâmetros: [
+        event: evento vindo do html ou nulo caso não haja
+      ]
+      Objetivo: Atualiza a lista do html com dados novos, caso haja.
+  */
+  UpdateList(event: any){
+    if(!this.loading){
+      this.loading = true;
+    }
+
+    // Obtem os animais da API
+    this.apiConnection.getAnimals()
+    .then((response)=>{
+      this.animals = JSON.parse(response.data);
+      console.log(this.animals);
+
+      // Desativa a variavel de carregando
+      this.loading = false;
+
+      // Completa o evento do IonLoader
+      if(event){
+        event.target.complete();
       }
+    })
+    .catch((error)=>{
+      const api_error = JSON.parse(error.error);
+      console.log(api_error);      
+    
+      // Completa o evento do IonLoader
+      if(event){
+        event.target.complete();
+      }
+    })
+
+  }
 }
   

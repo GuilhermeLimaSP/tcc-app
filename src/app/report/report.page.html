@@ -11,6 +11,11 @@
 </ion-header>
 
 <ion-content>
+  <!-- IonRefresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="UpdateList($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <!-- Skeleton screen -->
   <div *ngIf="loading">
     <ion-list>
@@ -108,7 +113,7 @@
       <ion-list>
         <ion-item *ngFor="let report of reports" [routerLink]="['/view-report', report.id]" routerDirection="forward">
           <ion-label>
-            <h2>Report {{ report.id }} - {{ report.report_date_accepted }}</h2>
+            <h2><ion-icon name="arrow-redo-outline"></ion-icon> Report {{ report.id }} - {{ report.report_created_data }}</h2>
             <p>{{ report.location_address }}, {{ report.location_number }}, {{ report.location_district }}</p>
           </ion-label>
   

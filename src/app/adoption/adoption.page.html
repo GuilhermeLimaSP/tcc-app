@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content>
+  <!-- IonRefresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="UpdateList($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <!-- Skeleton screen -->
   <div *ngIf="loading">
     <ion-list>
@@ -118,4 +123,4 @@
       </ion-item>
     </ion-list>
   </div>
-</ion-content>
+</ion-content> 

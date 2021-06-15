@@ -24,7 +24,7 @@
     <h3>Informações básicas</h3>
 
     <ul>
-      <ul><strong>Idade:</strong>{{ dataAnimal.animal_age || "Não informado" }}</ul>
+      <ul><strong>Idade:</strong> {{ dataAnimal.animal_age || "Não informado" }}</ul>
       <ul><strong>Raça:</strong> {{ dataAnimal.animal_race || "Não informado" }}</ul>
       <ul><strong>Peso:</strong> {{ dataAnimal.weight || "Não informado" }}</ul>
       <ul><strong>Porte:</strong> {{ dataAnimal.category || "Não informado" }}</ul>
@@ -39,10 +39,11 @@
     <h3>Adote</h3>
     <p>Você gostaria de adotar este animal? Entre em contato diretamente com a ONG para maiores informações:</p>
     <ul>
+      <li><strong>Nome: </strong> {{ dataOng.ong_name}}</li>
+      <li><strong>Telefone: </strong> {{ dataOng.ong_phone || "Não informado" }}</li>
+      <li><strong>Whatsapp: </strong> {{ "Não informado" }}</li>
       <li><strong>E-mail:</strong> {{ dataOng.ong_email }}</li>
-      <li><strong>Pessoalmente:</strong> {{ dataOng.location_address }} {{dataOng.location_number}},
-        {{dataOng.location_district}},
-        {{dataOng.location_state }}</li>
+      <li><strong>Pessoalmente:</strong> {{ dataOng.location_address }} {{dataOng.location_number}}, {{dataOng.location_district}}, {{dataOng.location_state }}</li>
     </ul>
   </div>
   <ion-footer>

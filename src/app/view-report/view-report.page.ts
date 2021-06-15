@@ -43,12 +43,12 @@ export class ViewReportPage implements OnInit {
         if(this.dataReport['report_situation'] == "rescued"){
           this.animal_report_image = this.dataReport['report_img'];
         }
- 
+  
         // Fake Loader
         setTimeout(()=>{
           this.loading = false;
         }, 1500)
-      }) 
+      })  
       .catch((error)=>{
         const api_error = JSON.parse(error.error);
         console.log(api_error);       

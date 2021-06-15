@@ -31,15 +31,15 @@
    
     <br><br><br><br><br>
     <div class="container_text">
-      <h2>Animal:</h2>
+      <h2>Animal</h2>
       <p><b>Tipo:</b> {{ animal_type }}</p>
       <p><b>Descrição:</b> {{ dataReport.animal_description }}</p>
       <p><b>Relato:</b> {{ dataReport.animal_situation }}</p>
 
-      <h2>Localização:</h2>
+      <h2>Localização</h2>
       <p><b>CEP:</b> {{ dataReport.location_cep }}</p>
       <p><b>Rua:</b> {{ dataReport.location_address }}</p>
-      <p><b>Número próximo:</b> {{ dataReport.location_district }}</p>
+      <p><b>Número próximo:</b> {{ dataReport.location_number }}</p>
       <p><b>Bairro:</b> {{ dataReport.location_district }}</p>
       <p><b>Estado:</b> {{ dataReport.location_state }}</p>
 
@@ -54,7 +54,7 @@
         <h5>Imagem após resgate</h5>
         <img src="{{ apiConnection.baseImagePath }}{{ animal_report_image }}" alt="">
       </div>
-    </div>
+    </div> 
   </div>
 </ion-content>
  
