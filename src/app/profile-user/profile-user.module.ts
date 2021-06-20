@@ -8,6 +8,10 @@ import { ProfileUserPageRoutingModule } from './profile-user-routing.module';
 
 import { ProfileUserPage } from './profile-user.page';
 
+// Custom Import
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/file/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +19,7 @@ import { ProfileUserPage } from './profile-user.page';
     IonicModule,
     ProfileUserPageRoutingModule
   ],
-  declarations: [ProfileUserPage]
+  declarations: [ProfileUserPage],
+  providers: [ Camera, File ]
 })
 export class ProfileUserPageModule {}

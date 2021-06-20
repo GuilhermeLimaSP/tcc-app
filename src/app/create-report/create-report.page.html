@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content> 
   <div class="ion-text-center">
     <p>Preencha as seguintes informações para gerar o report.</p>
   </div>
@@ -86,22 +86,24 @@
     </ion-item>
 
 
-    <h4 class="ion-text-center">Imagens</h4>
-    <div class="ion-text-center">
-      <p>Precisamos que você tire 2 fotos para complementar o seu report</p>
+    <div class="image_section">
+      <h4 class="ion-text-center">Imagens</h4>
+      <div class="ion-text-center">
+        <p>Precisamos que você tire 2 fotos para complementar o seu report</p>
+      </div>
+
+      <h5>Foto do animal <ion-icon name="camera-outline" id="photo_animal_icon" (click)="takePhoto($event.target)"></ion-icon>
+      </h5>
+      <ion-card [hidden]="!photo_animal">
+        <img src="{{photo_animal}}" name="photo_animal" id="photo_animal" alt="Imagem de foto do animal" (click)="takePhoto($event.target)">
+      </ion-card>
+
+      <h5>Ponto de referência <ion-icon name="camera-outline" id="photo_reference_icon" (click)="takePhoto($event.target)"></ion-icon>
+      </h5>
+      <ion-card [hidden]="!photo_reference">
+        <img src="{{photo_reference}}" name="photo_reference" id="photo_reference" alt="Imagem de referencia para localização" (click)="takePhoto($event.target)">
+      </ion-card>
     </div>
-
-    <h5>Foto do animal <ion-icon name="camera-outline" id="photo_animal_icon" (click)="takePhoto($event.target)"></ion-icon>
-    </h5>
-    <ion-card [hidden]="!photo_animal">
-      <img src="{{photo_animal}}" name="photo_animal" id="photo_animal" alt="Imagem de foto do animal" (click)="takePhoto($event.target)">
-    </ion-card>
-
-    <h5>Ponto de referência <ion-icon name="camera-outline" id="photo_reference_icon" (click)="takePhoto($event.target)"></ion-icon>
-    </h5>
-    <ion-card [hidden]="!photo_reference">
-      <img src="{{photo_reference}}" name="photo_reference" id="photo_reference" alt="Imagem de referencia para localização" (click)="takePhoto($event.target)">
-    </ion-card>
 
     <ion-button 
       expand="full" 

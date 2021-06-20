@@ -45,14 +45,14 @@
 
       <h2>Fotos enviadas</h2>
       <h5>Foto do animal</h5>
-      <img src="{{ apiConnection.baseImagePath }}{{ dataReport.animal_photo }}" alt="">
+      <img src="{{ apiConnection.baseImagePath }}{{ dataReport.animal_photo }}" alt="" (click)="imgFullscreen(apiConnection.baseImagePath+dataReport.animal_photo, 'Foto do animal')">
     
       <h5>Ponto de referência</h5>
-      <img src="{{ apiConnection.baseImagePath }}{{ dataReport.location_photo }}" alt="">
+      <img src="{{ apiConnection.baseImagePath }}{{ dataReport.location_photo }}" alt="" (click)="imgFullscreen(apiConnection.baseImagePath+dataReport.location_photo, 'Imagem de referência do local')">
 
       <div *ngIf="animal_report_image != ''">
         <h5>Imagem após resgate</h5>
-        <img src="{{ apiConnection.baseImagePath }}{{ animal_report_image }}" alt="">
+        <img src="{{ apiConnection.baseImagePath }}{{ animal_report_image }}" alt="" (click)="imgFullscreen(apiConnection.baseImagePath+animal_report_image, 'Imagem após resgate')">
       </div>
     </div> 
   </div>

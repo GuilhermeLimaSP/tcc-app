@@ -6,7 +6,7 @@
 
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content>
   <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
@@ -27,14 +27,15 @@
       <li>E-mail: {{ data.email }}</li>
       <li>CEP: {{ data.cep }}</li>
       <li>Celular: {{ data.phone }}</li>
-      <li>Criação da conta: {{ data.created_at }}</li>
+      <li>Criação da conta: {{ date_user }}</li>
     </ul>
 
     <div class="buttons">
       <ion-button expand="block" color="danger" (click)="openPassword()">Mudar Senha</ion-button>
-      <ion-button expand="block" (click)="openInfoChange()">Atualizar Informações</ion-button>
+      <ion-button expand="block" (click)="openAvatarModal()">Atualizar Avatar</ion-button>
+      <ion-button expand="block" (click)="openInfoChange()">Atualizar Outros</ion-button>
     </div>    
-  </div>
+  </div> 
 
 </ion-content> 
  

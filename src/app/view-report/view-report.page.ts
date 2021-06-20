@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Custom Imports
 import { ActivatedRoute } from '@angular/router';
 import { ApiConnectionService } from '../services/api-connection.service';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-view-report',
@@ -24,7 +25,8 @@ export class ViewReportPage implements OnInit {
   animal_report_image: string = "";
 
   constructor(private route : ActivatedRoute,
-              private apiConnection: ApiConnectionService) { }
+              private apiConnection: ApiConnectionService,
+              private photoViewer: PhotoViewer) { }
 
   ngOnInit() {
     // Get Id
@@ -106,6 +108,10 @@ export class ViewReportPage implements OnInit {
       default:
         this.animal_type = "Outros";
     }
+  }
+
+  imgFullscreen(url: string, name: string){
+    this.photoViewer.show(url, name)
   }
 
 }

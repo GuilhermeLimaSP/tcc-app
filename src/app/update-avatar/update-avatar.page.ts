@@ -10,24 +10,30 @@ import { Router } from '@angular/router';
 import { AlertsService } from '../services/alerts.service';
 import { ApiConnectionService } from '../services/api-connection.service';
 import { StorageService } from '../services/storage.service';
-import { UtilsService } from '../services/utils.service';
 
 @Component({
-  selector: 'app-profile-user',
-  templateUrl: './profile-user.page.html',
-  styleUrls: ['./profile-user.page.scss'],
+  selector: 'app-update-avatar',
+  templateUrl: './update-avatar.page.html',
+  styleUrls: ['./update-avatar.page.scss'],
 })
-export class ProfileUserPage implements OnInit {
+export class UpdateAvatarPage implements OnInit {
   email: string;
-  cep: string;
-  phone: string;
+  profilePic: string;
   storageData: any;
+
+  userImage = "";
+  changedImage = false;
+  isLoading = false;
+
+  imagePickerOptions = {
+    maximumImagesCount: 1,
+    quality: 50
+  };
 
   constructor(public viewCtrl: ModalController,
               public apiConnection: ApiConnectionService,
               public storage: StorageService,
               public alertService: AlertsService,
-              private utils: UtilsService,
               private router: Router,
               private camera: Camera,
               public actionSheetController: ActionSheetController,
@@ -38,31 +44,67 @@ export class ProfileUserPage implements OnInit {
 
     // Definir os valores já armazenados
     this.email = this.storageData['email'];
-    this.cep = this.storageData['cep'];
-    this.phone = this.storageData['phone'];
+    this.userImage = this.apiConnection.baseImagePath + this.storageData['img'];
+  }
+            
+  pickImage(sourceType: any) {
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: sourceType,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.changedImage = true;
+      this.userImage = 'data:image/jpeg;base64,' + imageData;
+
+      console.log(this.userImage);
+    },(err) => {
+      console.log(err);
+    });
   }
 
-  updateInfos(password: string, new_cep: string, new_phone: string){
-    if(this.storageData['cep'] == new_cep && new_phone == this.storageData['phone']){
-      this.alertService.showAlert("Nenhuma alteração", "Você deve alterar algo para atualizar seu perfil.");
-      return;
-    }
+  async selectImage() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "Selecione a fonte:",
+      buttons: [
+        {
+        text: 'Da minha galeria',
+          handler: () => {
+            this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+          }
+        },
+        {
+          text: 'Usar a câmera',
+          handler: () => {
+            this.pickImage(this.camera.PictureSourceType.CAMERA);
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }
+      ]
+    });
+
+    await actionSheet.present();
+  }
+
+  updateAvatar(password: string){
+    // Validação
     if(!password){
-      this.alertService.showAlert("Digite sua senha", "Você deve digitar sua senha atual para validar a operação.");
+      this.alertService.showAlert("Preencha sua senha", "Você precisa preencher o campo de senha.");
       return;
     }
-    if(!this.utils.validation_cep(new_cep)){
-      this.alertService.showAlert("Cep inválido", "Por favor, insira um cep válido!");
-      return;
-    }
-    if(!this.utils.validation_phone(new_phone)){
-      this.alertService.showAlert("Telefone inválido", "Insira um número de celular válido!");
+    if(!this.changedImage){
+      this.alertService.showAlert("Imagem não atualizada", "Por favor, atualize a sua imagem clicando na imagem atual.");
       return;
     }
 
-    new_cep = new_cep.replace('-', '');
-    this.apiConnection.changeInfos(password, this.storageData['email'], new_cep, new_phone)
-      .then((response)=>{
+    this.apiConnection.updateAvatar(this.email, password, this.userImage.replace("data:image/jpeg;base64", ""))
+      .then((response) => {
         const api_response = JSON.parse(response.data);
         console.log(api_response);
 
@@ -75,7 +117,7 @@ export class ProfileUserPage implements OnInit {
           this.alertService.showAlert("Erro interno", "Se o problema persistir, contate o suporte.");
         }
       })
-      .catch((error)=>{
+      .catch((error) => {
         const api_error = JSON.parse(error.error);
         console.log(api_error);
 
@@ -96,4 +138,3 @@ export class ProfileUserPage implements OnInit {
     this.router.navigateByUrl("/" + page);
   }
 }
-  

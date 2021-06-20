@@ -12,7 +12,7 @@
 
   <div *ngIf="!loading">
     <div class="profile_one">
-      <img src="{{ apiConnection.baseImagePath }}{{ dataOng.ong_img }}" alt="Foto da Ong" id="ong_photo">
+      <img src="{{ apiConnection.baseImagePath }}{{ dataOng.ong_img }}" alt="Foto da Ong" id="ong_photo" (click)="imgFullscreen(apiConnection.baseImagePath+dataOng.ong_img, dataOng.ong_name)">
       <div class="profile_texts">
         <h2>{{ dataOng.ong_name }}</h2>
         <span>{{ dataOng.location_state }}</span>
@@ -37,7 +37,7 @@
       <h3>Sobre</h3>
       <p>{{ dataOng.ong_description }}</p>
 
-      <ion-item-divider></ion-item-divider>
+      <ion-item-divider></ion-item-divider> 
       <h3>Contato</h3>
       <p>Você pode entrar em contato com a ONG pelos seguintes meios:</p>
       <ul>

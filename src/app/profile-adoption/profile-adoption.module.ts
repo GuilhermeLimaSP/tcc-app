@@ -8,6 +8,10 @@ import { ProfileAdoptionPageRoutingModule } from './profile-adoption-routing.mod
 
 import { ProfileAdoptionPage } from './profile-adoption.page';
 
+// Custom Import
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +19,7 @@ import { ProfileAdoptionPage } from './profile-adoption.page';
     IonicModule,
     ProfileAdoptionPageRoutingModule
   ],
-  declarations: [ProfileAdoptionPage]
+  declarations: [ProfileAdoptionPage],
+  providers: [ PhotoViewer ]
 })
 export class ProfileAdoptionPageModule {}

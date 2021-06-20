@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiConnectionService } from '../services/api-connection.service';
 
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+
 
 @Component({
   selector: 'app-profile-adoption',
@@ -14,9 +16,12 @@ export class ProfileAdoptionPage implements OnInit {
   dataAnimal: any = {};
   dataOng: any = {}; 
   loading: boolean = true;
+  animal_category: string;
+  animal_gender: string;
 
   constructor(private route : ActivatedRoute,
-              private apiConnection: ApiConnectionService) { }
+              private apiConnection: ApiConnectionService,
+              private photoViewer: PhotoViewer) { }
 
   ngOnInit() { 
     // Get Id
@@ -37,7 +42,17 @@ export class ProfileAdoptionPage implements OnInit {
         // Salva os dados da ONG
         this.dataOng = JSON.parse(response.data);
         console.log(this.dataOng);
-
+        
+        // Tradução de algumas palavras
+        this.animal_gender = this.dataAnimal['animal_gender'] = 'male' ? "Masculino" : "Femenino";
+        if(this.dataAnimal['animal_category'] == 'small'){
+          this.animal_category = "Pequeno";
+        }else if(this.dataAnimal['average'] == 'small'){
+          this.animal_category = "Médio";
+        }else{
+          this.animal_category = "Grande";
+        }
+        
         // disable loading bar && set intentional delay
         setTimeout(()=>{
           this.loading = false;
@@ -54,6 +69,10 @@ export class ProfileAdoptionPage implements OnInit {
       const api_error = JSON.parse(error.error);
       console.log(api_error);       
     });
+  }
+
+  imgFullscreen(url: string, name: string){
+    this.photoViewer.show(url, name)
   }
 
 }

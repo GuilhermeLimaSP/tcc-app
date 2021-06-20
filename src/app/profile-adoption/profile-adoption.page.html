@@ -11,7 +11,7 @@
   <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 
   <div class="container" *ngIf="!loading">
-    <img src="{{ apiConnection.baseImagePath }}{{ dataAnimal.animal_photo }}" alt="foto de um animal" id="animal_photo">
+    <img src="{{ apiConnection.baseImagePath }}{{ dataAnimal.animal_photo }}" alt="foto de um animal" id="animal_photo" (click)="imgFullscreen(apiConnection.baseImagePath+dataAnimal.animal_photo, dataAnimal.animal_name)">
     <h1>{{ dataAnimal.animal_name }}</h1>
     <span>{{ dataAnimal.animal_race}}</span>
   </div>
@@ -26,9 +26,9 @@
     <ul>
       <ul><strong>Idade:</strong> {{ dataAnimal.animal_age || "Não informado" }}</ul>
       <ul><strong>Raça:</strong> {{ dataAnimal.animal_race || "Não informado" }}</ul>
-      <ul><strong>Peso:</strong> {{ dataAnimal.weight || "Não informado" }}</ul>
-      <ul><strong>Porte:</strong> {{ dataAnimal.category || "Não informado" }}</ul>
-      <ul><strong>Sexo:</strong> {{ dataAnimal.animal_gender || "Não informado" }}</ul>
+      <ul><strong>Peso:</strong> {{ dataAnimal.animal_weight || "Não informado" }}</ul>
+      <ul><strong>Porte:</strong> {{ animal_category || "Não informado" }}</ul>
+      <ul><strong>Sexo:</strong> {{ animal_gender }}</ul>
     </ul>
 
     <ion-item-divider></ion-item-divider>

@@ -8,6 +8,9 @@ import { ViewReportPageRoutingModule } from './view-report-routing.module';
 
 import { ViewReportPage } from './view-report.page';
 
+// Custom Imports
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { ViewReportPage } from './view-report.page';
     IonicModule,
     ViewReportPageRoutingModule
   ],
-  declarations: [ViewReportPage]
+  declarations: [ViewReportPage],
+  providers: [PhotoViewer]
 })
 export class ViewReportPageModule {}

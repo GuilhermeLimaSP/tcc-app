@@ -6,6 +6,7 @@
 
 <ion-content>
   <form>
+    <h3>Informação Geral</h3>
     <ion-item>
       <ion-label position="stacked">Seu CEP</ion-label>
       <ion-input type="text" name="cep" [(ngModel)]="cep"></ion-input>
@@ -18,7 +19,7 @@
       <ion-label position="stacked">Confirme sua senha atual</ion-label>
       <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
     </ion-item>   
-    
+     
     <ion-button expand="block" color="success" (click)="updateInfos(password, cep, phone)">Atualizar</ion-button>
     <ion-button expand="block" color="danger" (click)="dismiss()">Sair</ion-button>
   </form>

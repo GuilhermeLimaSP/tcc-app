@@ -8,6 +8,9 @@ import { ProfileOngPageRoutingModule } from './profile-ong-routing.module';
 
 import { ProfileOngPage } from './profile-ong.page';
 
+// Custom Imports
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { ProfileOngPage } from './profile-ong.page';
     IonicModule,
     ProfileOngPageRoutingModule
   ],
-  declarations: [ProfileOngPage]
+  declarations: [ProfileOngPage],
+  providers: [PhotoViewer]
 })
 export class ProfileOngPageModule {}

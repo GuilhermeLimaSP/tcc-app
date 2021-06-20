@@ -62,7 +62,11 @@ const routes: Routes = [
   {
     path: 'user-password',
     loadChildren: () => import('./user-password/user-password.module').then( m => m.UserPasswordPageModule)
+  },  {
+    path: 'update-avatar',
+    loadChildren: () => import('./update-avatar/update-avatar.module').then( m => m.UpdateAvatarPageModule)
   }
+
 ];
 
 @NgModule({

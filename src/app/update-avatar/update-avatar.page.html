@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Atualizar Informações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <h3>Sua foto atual</h3>
+
+    <small>Clique na imagem atual para atualizar</small><br>
+    <img src="{{ userImage }}" alt="Imagem do usuário" (click)="selectImage()">
+
+    <ion-item>
+      <ion-label position="stacked">Sua Senha:</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
+    </ion-item>   
+     
+    <ion-button expand="block" color="success" (click)="updateAvatar(password)">Atualizar</ion-button>
+    <ion-button expand="block" color="danger" (click)="dismiss()">Sair</ion-button>
+  </form>

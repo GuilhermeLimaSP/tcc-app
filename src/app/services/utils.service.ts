@@ -22,4 +22,7 @@ export class UtilsService {
 
     return re.test(phone);
   }
+  revertDate(data: string){
+    return data.split('-').reverse().join('/');
+  }
 }

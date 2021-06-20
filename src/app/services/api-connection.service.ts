@@ -17,7 +17,7 @@ export class ApiConnectionService {
 
   login(email: string, password: string){
     const requestUrl = `${this.baseUrl}/user/login.php`;
-
+ 
     return this.http.get(requestUrl, {
       email: email,
       pwd: password
@@ -82,7 +82,6 @@ export class ApiConnectionService {
     }
 
     this.http.setDataSerializer('json');
-
     return this.http.put(requestUrl, data, headers);   
   }
   
@@ -98,12 +97,8 @@ export class ApiConnectionService {
       'cep': cep, 
       'phone': phone
     }
-
-    console.log("sending data")
-    console.log(data);
-    
+  
     this.http.setDataSerializer('json');
-
     return this.http.put(requestUrl, data, headers);      
   }
 
@@ -129,10 +124,6 @@ export class ApiConnectionService {
     }
 
     this.http.setDataSerializer('json');
-
-    console.log("sending");
-    console.log(data);
-
     return this.http.post(requestUrl, data, headers); 
   }
 
@@ -156,6 +147,36 @@ export class ApiConnectionService {
     const requestUrl = `${this.baseUrl}/utils/ping.php`;
 
     return this.http.get(requestUrl, {}, {});
+  }
+
+  updateAvatar(email: string, password: string, base64_image: string){
+    const headers = {
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+    const requestUrl = `${this.baseUrl}/user/update_avatar.php`;
+
+    const data = {
+      'email': email,
+      'pwd': password,
+      'new_avatar': base64_image
+    }
+
+    this.http.setDataSerializer('json');
+    return this.http.put(requestUrl, data, headers); 
+  }
+
+  OngView(id: number){
+    const headers = {
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+    const requestUrl = `${this.baseUrl}/ong/view.php`;
+
+    const data = {
+      'id': id,
+    }
+
+    this.http.setDataSerializer('json');
+    return this.http.put(requestUrl, data, headers); 
   }
 
 }
