@@ -25,6 +25,7 @@ export class UpdateAvatarPage implements OnInit {
   changedImage = false;
   isLoading = false;
 
+  // Objeto de configuração da câmera
   imagePickerOptions = {
     maximumImagesCount: 1,
     quality: 50
@@ -39,6 +40,10 @@ export class UpdateAvatarPage implements OnInit {
               public actionSheetController: ActionSheetController,
               private file: File) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   async ngOnInit() {
     this.storageData = await this.storage.getData();
 
@@ -46,8 +51,15 @@ export class UpdateAvatarPage implements OnInit {
     this.email = this.storageData['email'];
     this.userImage = this.apiConnection.baseImagePath + this.storageData['img'];
   }
-            
+     
+  /*  Método: pickImage 
+      Parâmetros: [
+        sourceType: Origem da imagem (Camera ou biblioteca)
+      ]
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   pickImage(sourceType: any) {
+    // Objeto de configuração da câmera
     const options: CameraOptions = {
       quality: 100,
       sourceType: sourceType,
@@ -56,6 +68,7 @@ export class UpdateAvatarPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
 
+    // Usa o plugin câmera para tirar uma foto ou selecionar da galeria
     this.camera.getPicture(options).then((imageData) => {
       this.changedImage = true;
       this.userImage = 'data:image/jpeg;base64,' + imageData;
@@ -66,6 +79,10 @@ export class UpdateAvatarPage implements OnInit {
     });
   }
 
+  /*  Método: selectImage 
+      Parâmetros: []
+      Objetivo: Abre um menu(actionSheetController) para que o usuário escolha qual fonte da imagem
+  */
   async selectImage() {
     const actionSheet = await this.actionSheetController.create({
       header: "Selecione a fonte:",
@@ -89,9 +106,16 @@ export class UpdateAvatarPage implements OnInit {
       ]
     });
 
+    // Exibe o menu
     await actionSheet.present();
   }
 
+  /*  Método: updateAvatar 
+      Parâmetros: [
+        password: Senha do usuário
+      ]
+      Objetivo: Valida as informações e chama a API para mudar a foto de perfil do usuário
+  */
   updateAvatar(password: string){
     // Validação
     if(!password){
@@ -103,11 +127,13 @@ export class UpdateAvatarPage implements OnInit {
       return;
     }
 
+    // Chama a API
     this.apiConnection.updateAvatar(this.email, password, this.userImage.replace("data:image/jpeg;base64", ""))
       .then((response) => {
         const api_response = JSON.parse(response.data);
         console.log(api_response);
 
+        // Verifica a resposta
         if(api_response.message == "successful_change"){
           this.alertService.showAlert("Informações atualizadas", "Você precisará fazer login novamente.");    
           this.storage.removeData();
@@ -121,6 +147,7 @@ export class UpdateAvatarPage implements OnInit {
         const api_error = JSON.parse(error.error);
         console.log(api_error);
 
+        // Verifica a resposta
         if(api_error.message == "invalid_authentication"){
           this.alertService.showAlert("Senha inválida", "Digite novamente a senha atual de sua conta.");
         }else if(api_error.message == "not_found"){
@@ -131,9 +158,20 @@ export class UpdateAvatarPage implements OnInit {
       })
   }
 
+  /*  Método: dismiss 
+    Parâmetros: []
+    Objetivo: Fecha a view do modal;
+  */
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
+  /*  Método: goTo 
+      Parâmetros: [
+        page: Página para redirecionar
+      ]
+      Objetivo: Faz a navegação para outra página usando o router
+  */ 
   goTo(page: string){ 
     this.router.navigateByUrl("/" + page);
   }

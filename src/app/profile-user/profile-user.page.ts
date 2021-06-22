@@ -33,6 +33,10 @@ export class ProfileUserPage implements OnInit {
               public actionSheetController: ActionSheetController,
               private file: File) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   async ngOnInit() {
     this.storageData = await this.storage.getData();
 
@@ -43,6 +47,7 @@ export class ProfileUserPage implements OnInit {
   }
 
   updateInfos(password: string, new_cep: string, new_phone: string){
+    // Validações
     if(this.storageData['cep'] == new_cep && new_phone == this.storageData['phone']){
       this.alertService.showAlert("Nenhuma alteração", "Você deve alterar algo para atualizar seu perfil.");
       return;
@@ -60,12 +65,16 @@ export class ProfileUserPage implements OnInit {
       return;
     }
 
+    // Limpa traços do CEP, caso haja
     new_cep = new_cep.replace('-', '');
+
+    // Faz a chamada a API
     this.apiConnection.changeInfos(password, this.storageData['email'], new_cep, new_phone)
       .then((response)=>{
         const api_response = JSON.parse(response.data);
         console.log(api_response);
 
+        // Verifica a resposta
         if(api_response.message == "successful_change"){
           this.alertService.showAlert("Informações atualizadas", "Você precisará fazer login novamente.");    
           this.storage.removeData();
@@ -79,6 +88,7 @@ export class ProfileUserPage implements OnInit {
         const api_error = JSON.parse(error.error);
         console.log(api_error);
 
+        // Verifica a resposta
         if(api_error.message == "invalid_authentication"){
           this.alertService.showAlert("Senha inválida", "Digite novamente a senha atual de sua conta.");
         }else if(api_error.message == "not_found"){
@@ -89,9 +99,20 @@ export class ProfileUserPage implements OnInit {
       })
   }
 
+  /*  Método: dismiss 
+      Parâmetros: [ ]
+      Objetivo: Fecha a view do modal
+  */ 
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
+  /*  Método: goTo 
+      Parâmetros: [
+        page: Página para redirecionar
+      ]
+      Objetivo: Faz a navegação para outra página usando o router
+  */ 
   goTo(page: string){ 
     this.router.navigateByUrl("/" + page);
   }

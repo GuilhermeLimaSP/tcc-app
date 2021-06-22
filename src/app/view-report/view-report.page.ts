@@ -28,18 +28,24 @@ export class ViewReportPage implements OnInit {
               private apiConnection: ApiConnectionService,
               private photoViewer: PhotoViewer) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   ngOnInit() {
-    // Get Id
+    // Obtem id do usuário
     const id = this.route.snapshot.params.id;
     console.log(`Id of report: ${id}`);
 
-    // Get Animals
+    // Obtem o report da API
     this.apiConnection.getReport(id)
       .then((response)=>{
         this.dataReport = JSON.parse(response.data);
         console.log(this.dataReport);
 
+        // Chama a montagem da progressbar
         this.stepBarAlgorithm(this.dataReport.report_situation);
+        // Chama a tradução de alguns campos
         this.TransformHumanFields(this.dataReport);
 
         if(this.dataReport['report_situation'] == "rescued"){
@@ -57,6 +63,12 @@ export class ViewReportPage implements OnInit {
       });
   }
 
+  /*  Método: stepBarAlgorithm 
+      Parâmetros: [
+        state: Estado do report
+      ]
+      Objetivo: Monta as classes usadas na progressbar
+  */
   stepBarAlgorithm(state: any){
     // Sucess Progress
     if(state == "pending"){
@@ -97,6 +109,12 @@ export class ViewReportPage implements OnInit {
     }
   }
 
+  /*  Método: TransformHumanFields 
+      Parâmetros: [
+        data: Objeto data com informações do report
+      ]
+      Objetivo: Traduz alguns campos para o portugues
+  */
   TransformHumanFields(data: any){
     switch (data.animal_type) {
       case 'cat':
@@ -110,6 +128,13 @@ export class ViewReportPage implements OnInit {
     }
   }
 
+  /*  Método: imgFullscreen 
+      Parâmetros: [
+        url: Url da imagem
+        name: Nome que será exibido embaixo
+      ]
+      Objetivo: Abre a imagem em tela cheia
+  */
   imgFullscreen(url: string, name: string){
     this.photoViewer.show(url, name)
   }

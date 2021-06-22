@@ -44,10 +44,6 @@ const routes: Routes = [
     loadChildren: () => import('./create-report/create-report.module').then( m => m.CreateReportPageModule)
   },
   {
-    path: 'report-gps',
-    loadChildren: () => import('./report-gps/report-gps.module').then( m => m.ReportGpsPageModule)
-  },
-  {
     path: 'report-address',
     loadChildren: () => import('./report-address/report-address.module').then( m => m.ReportAddressPageModule)
   },
@@ -62,7 +58,8 @@ const routes: Routes = [
   {
     path: 'user-password',
     loadChildren: () => import('./user-password/user-password.module').then( m => m.UserPasswordPageModule)
-  },  {
+  },
+  {
     path: 'update-avatar',
     loadChildren: () => import('./update-avatar/update-avatar.module').then( m => m.UpdateAvatarPageModule)
   }

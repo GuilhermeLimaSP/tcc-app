@@ -63,7 +63,12 @@ export class LoginPage implements OnInit {
     this.menuCtrl.enable(false);
   }
 
+  /*  Método: watchConnection 
+      Parâmetros: []
+      Objetivo: Verifica a conexão com o servidor
+  */
   watchConnection(){
+      // Define um temporizador para verificar a conexão
       var timer = setInterval(() =>{
         console.log("Trying connection with server...")
         
@@ -72,10 +77,12 @@ export class LoginPage implements OnInit {
             const api_response = JSON.parse(response.data);
             console.log(api_response);
     
+            // Verifica a resposta da API
             if(api_response.message = "pong"){
               this.alertService.showAlert("Conectado aos servidores!", "A conexão foi feita com sucesso, você já pode usar o aplicativo.");
               this.ConnectionWithApi = true;
 
+              // Caso a conexão seja feita com sucesso, desative o temporizador
               clearInterval(timer);
             }
           })  
@@ -84,6 +91,13 @@ export class LoginPage implements OnInit {
        }, 3000);
   }
 
+  /*  Método: login 
+      Parâmetros: [
+        email: e-mail do usuário,
+        password: senha do usuário
+      ]
+      Objetivo: Faz a chamada a API verificando o usuário e senha informado
+  */
   login(email: string, password: string){
     // Validações
     if(!this.utils.validation_email(email)){
@@ -136,9 +150,20 @@ export class LoginPage implements OnInit {
       });
   }
 
+  /*  Método: changePassword 
+      Parâmetros: []
+      Objetivo: Abre um modal com uma mensagem
+  */
   changePassword(){
     this.alertService.showAlert("Troca de senha", "Para trocar sua senha entre em contato com o suporte!")
   }
+
+  /*  Método: goTo 
+      Parâmetros: [
+        page: Página para redirecionar
+      ]
+      Objetivo: Faz a navegação para outra página usando o router
+  */ 
   goTo(page: string){ 
     this.router.navigateByUrl("/" + page);
   }

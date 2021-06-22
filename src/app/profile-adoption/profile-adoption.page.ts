@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Custom Imports
 import { ActivatedRoute } from '@angular/router';
 import { ApiConnectionService } from '../services/api-connection.service';
-
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-
 
 @Component({
   selector: 'app-profile-adoption',
@@ -23,6 +21,10 @@ export class ProfileAdoptionPage implements OnInit {
               private apiConnection: ApiConnectionService,
               private photoViewer: PhotoViewer) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   ngOnInit() { 
     // Get Id
     const id = this.route.snapshot.params.id;
@@ -71,6 +73,13 @@ export class ProfileAdoptionPage implements OnInit {
     });
   }
 
+  /*  Método: imgFullscreen 
+      Parâmetros: [
+        url: Url da imagem
+        name: Nome que será exibido embaixo
+      ]
+      Objetivo: Abre a imagem em tela cheia
+  */
   imgFullscreen(url: string, name: string){
     this.photoViewer.show(url, name)
   }

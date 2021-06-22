@@ -20,6 +20,10 @@ export class ProfileOngPage implements OnInit {
               private apiConnection: ApiConnectionService,
               private photoViewer: PhotoViewer) { }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   ngOnInit() {
     // Get Id
     this.id = this.route.snapshot.params.id;
@@ -43,17 +47,28 @@ export class ProfileOngPage implements OnInit {
     });
   }
 
+  /*  Método: ionViewDidLeave 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao sair da tela
+  */
   ionViewDidLeave(){
+    // Caso haja um temporizador ativa
     if(this.timerView){
+      // Desatia o temporizador
       clearTimeout(this.timerView)
       console.log("viewTimer() canceled")
     }
   }
 
+  /*  Método: viewTimer 
+      Parâmetros: []
+      Objetivo: Inicia o processo para contar a visualização no perfil de uma ong
+  */
   viewTimer(){
     this.timerView = setTimeout(() => {
       console.log("viewTimer() running");
 
+      // Faz a chamada a API
       this.apiConnection.OngView(this.id)
         .then((response) => {
           const api_response = JSON.parse(response.data);
@@ -68,10 +83,18 @@ export class ProfileOngPage implements OnInit {
           console.log(api_error);
         })
 
+        // Desativa o temporizador
         this.timerView = null;
-      }, 15000);
+      }, 15000); // 15000ms = 15s
   }
 
+  /*  Método: imgFullscreen 
+      Parâmetros: [
+        url: Url da imagem
+        name: Nome que será exibido embaixo
+      ]
+      Objetivo: Abre a imagem em tela cheia
+  */
   imgFullscreen(url: string, name: string){
     this.photoViewer.show(url, name)
   }

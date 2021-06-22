@@ -24,6 +24,10 @@ export class ReportAddressPage implements OnInit {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
   }
 
+  /*  Método: ngOnInit 
+      Parâmetros: []
+      Objetivo: Dispara eventos ao iniciar a página
+  */
   ngOnInit() {
   }
 
