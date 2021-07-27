@@ -29,6 +29,25 @@ Utilizamos os seguintes Plugins:
 - GOOGLE API: Utilizamos a API AutoComplete do Google (https://developers.google.com/maps/documentation/javascript/examples/places-queryprediction);
 - Ion-Menu: Utilizamos o Plugin para um menu simples, mas eficaz (https://ionicframework.com/docs/api/menu).
 
+# Screenshots
+Página de login<br>
+<img src="https://user-images.githubusercontent.com/82242086/127235341-a5edcf3b-98d9-4f8c-ab7d-4296dc920cdc.jpg" width="300" height="600">
+
+Página de criação de conta<br>
+<img src="https://user-images.githubusercontent.com/82242086/127235348-73488107-0a1f-49c2-af89-b50c7eb6c3fc.jpg" width="300" height="600">
+
+Sistema de carregamento usando ion-skeleton<br>
+<img src="https://user-images.githubusercontent.com/82242086/127235365-3b1ac0ed-52dd-49c3-a3b5-d314780fa918.jpg" width="300" height="600">
+
+Página de ONGs<br>
+<img src="https://user-images.githubusercontent.com/82242086/127235456-dc67c53d-4f87-40e9-8492-55ed92ba964f.jpg" width="300" height="600">
+
+Página de perfil de uma ONG<br>
+<img src="https://user-images.githubusercontent.com/82242086/127235504-90fad2e8-2fea-44c3-a3ea-bd8b535fd46f.jpg" width="300" height="600">
+
+Menu do aplicativo<br>
+<img src="https://user-images.githubusercontent.com/82242086/127235479-16eca423-e318-4751-9c84-0c210ce4d36c.jpg" width="300" height="600">
+
 # Equipe
 <b>Guilherme Parnaíba De Lima:</b> Front-end e back-end do aplicativo;<br>
 <b>Igor Santos Pessoa:</b> Front-end do aplicativo;
