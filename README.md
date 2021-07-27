@@ -49,5 +49,5 @@ Menu do aplicativo<br>
 <img src="https://user-images.githubusercontent.com/82242086/127235479-16eca423-e318-4751-9c84-0c210ce4d36c.jpg" width="300" height="600">
 
 # Equipe
-<b>Guilherme Parnaíba De Lima:</b> Front-end e back-end do aplicativo;<br>
+<b>Guilherme Parnaíba</b> Front-end e back-end do aplicativo;<br>
 <b>Igor Santos Pessoa:</b> Front-end do aplicativo;
